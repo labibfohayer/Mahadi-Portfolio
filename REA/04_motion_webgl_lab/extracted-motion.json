@@ -1,0 +1,203 @@
+{
+  "targetUrl": "https://weichie.com/",
+  "extractedAt": "2026-11-12T08:46:12.755Z",
+  "motion": {
+    "keyframes": {
+      "splide-loading": [
+        {
+          "keyText": "0%",
+          "cssText": "transform: rotate(0deg);"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "transform: rotate(1turn);"
+        }
+      ],
+      "btn-icon-pop": [
+        {
+          "keyText": "40%",
+          "cssText": "transform: scale(1.4);"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "transform: scale(1.2);"
+        }
+      ],
+      "hero-homepage-label-icon-bounce": [
+        {
+          "keyText": "0%",
+          "cssText": "transform: translateY(0px) scale(1) rotate(0deg);"
+        },
+        {
+          "keyText": "35%",
+          "cssText": "transform: translateY(-0.25rem) scale(1.22) rotate(-8deg);"
+        },
+        {
+          "keyText": "65%",
+          "cssText": "transform: translateY(0.0625rem) scale(0.94) rotate(5deg);"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "transform: translateY(0px) scale(1) rotate(0deg);"
+        }
+      ],
+      "chat-enter": [
+        {
+          "keyText": "0%",
+          "cssText": "opacity: 0; transform: translateY(var(--chat-enter-distance));"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "opacity: 1; transform: translateY(0px);"
+        }
+      ],
+      "show-content-image": [
+        {
+          "keyText": "0%",
+          "cssText": "visibility: hidden;"
+        },
+        {
+          "keyText": "99%",
+          "cssText": "visibility: hidden;"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "visibility: visible;"
+        }
+      ],
+      "turn-on-visibility": [
+        {
+          "keyText": "0%",
+          "cssText": "opacity: 0;"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "opacity: 1;"
+        }
+      ],
+      "turn-off-visibility": [
+        {
+          "keyText": "0%",
+          "cssText": "opacity: 1; visibility: visible;"
+        },
+        {
+          "keyText": "99%",
+          "cssText": "opacity: 0; visibility: visible;"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "opacity: 0; visibility: hidden;"
+        }
+      ],
+      "lightbox-zoom-in": [
+        {
+          "keyText": "0%",
+          "cssText": "transform: translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale));"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "transform: translate(-50%, -50%) scale(1);"
+        }
+      ],
+      "lightbox-zoom-out": [
+        {
+          "keyText": "0%",
+          "cssText": "transform: translate(-50%, -50%) scale(1); visibility: visible;"
+        },
+        {
+          "keyText": "99%",
+          "cssText": "visibility: visible;"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "transform: translate(calc((-100vw + var(--wp--lightbox-scrollbar-width))/2 + var(--wp--lightbox-initial-left-position)),calc(-50vh + var(--wp--lightbox-initial-top-position))) scale(var(--wp--lightbox-scale)); visibility: hidden;"
+        }
+      ],
+      "overlay-menu__fade-in-animation": [
+        {
+          "keyText": "0%",
+          "cssText": "opacity: 0; transform: translateY(0.5em);"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "opacity: 1; transform: translateY(0px);"
+        }
+      ],
+      "cmplz-fadein": [
+        {
+          "keyText": "0%",
+          "cssText": "opacity: 0;"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "opacity: 1;"
+        }
+      ],
+      "mc_slideIn": [
+        {
+          "keyText": "100%",
+          "cssText": "bottom: 0px;"
+        }
+      ],
+      "mc_slideOut": [
+        {
+          "keyText": "100%",
+          "cssText": "bottom: var(--cmplz-manage-consent-offset);"
+        }
+      ],
+      "fadeIn": [
+        {
+          "keyText": "0%",
+          "cssText": "opacity: 0;"
+        },
+        {
+          "keyText": "100%",
+          "cssText": "opacity: 1;"
+        }
+      ]
+    },
+    "keyframeCount": 14,
+    "animatedElements": [
+      {
+        "tag": "span",
+        "className": "hero-homepage__label-icon",
+        "animation": {
+          "name": "hero-homepage-label-icon-bounce",
+          "duration": "0.45s",
+          "timing": "cubic-bezier(0.19, 1, 0.22, 1)",
+          "iterationCount": "1"
+        }
+      },
+      {
+        "tag": "button",
+        "className": "cmplz-btn.cmplz-manage-consent.manage-consent-1",
+        "animation": {
+          "name": "mc_slideOut",
+          "duration": "0.5s",
+          "timing": "ease",
+          "iterationCount": "1"
+        }
+      }
+    ],
+    "transitionCurves": [
+      "background-color, color (0.3s, 0.3s, ease, ease)",
+      "all (0.5s, ease)",
+      "opacity (0.2s, ease)",
+      "background-color (0.2s, ease)",
+      "transform (0.2s, cubic-bezier(0.19, 1, 0.22, 1))",
+      "transform (0.2s, ease)",
+      "color (0.2s, ease)",
+      "transform (0.3s, ease)",
+      "background, color, border-color, box-shadow (0.2s, 0.2s, 0.2s, 0.6s, ease, ease, ease, cubic-bezier(0.19, 1, 0.22, 1))",
+      "opacity (0.25s, cubic-bezier(0.19, 1, 0.22, 1))",
+      "opacity (0.32s, ease)",
+      "opacity, transform (0.32s, 0.32s, ease, cubic-bezier(0.19, 1, 0.22, 1))",
+      "color, border-color (0.2s, 0.2s, ease, ease)"
+    ],
+    "animationCurves": [
+      "hero-homepage-label-icon-bounce (0.45s, cubic-bezier(0.19, 1, 0.22, 1))",
+      "mc_slideOut (0.5s, ease)"
+    ],
+    "webAnimationsCount": 3
+  }
+}

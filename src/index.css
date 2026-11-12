@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes hero-homepage-label-icon-bounce {
+  0% { transform: translateY(0px) scale(1) rotate(0deg); }
+  35% { transform: translateY(-0.25rem) scale(1.22) rotate(-8deg); }
+  65% { transform: translateY(0.0625rem) scale(0.94) rotate(5deg); }
+  100% { transform: translateY(0px) scale(1) rotate(0deg); }
+}
+
+@keyframes btn-icon-pop {
+  40% { transform: scale(1.4); }
+  100% { transform: scale(1.2); }
+}
+
+.animate-icon-bounce {
+  animation: hero-homepage-label-icon-bounce 0.45s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.transition-expo {
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "REA Motion & Animation Choreography Library",
+  "version": "1.0.0",
+  "cubicBezierCurves": {
+    "editorialFluid": {
+      "css": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "points": [0.16, 1, 0.3, 1],
+      "description": "Ultra-smooth high-end studio deceleration, ideal for page transitions and card reveals."
+    },
+    "appleSnappy": {
+      "css": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+      "points": [0.25, 0.1, 0.25, 1],
+      "description": "Quick, responsive standard UI curve for dropdowns, tooltips, and modal entries."
+    },
+    "lusionDramatic": {
+      "css": "cubic-bezier(0.76, 0, 0.24, 1)",
+      "points": [0.76, 0, 0.24, 1],
+      "description": "Dramatic S-curve ease with slow start, rapid acceleration in middle, and slow settle."
+    },
+    "elasticSpringOvershoot": {
+      "css": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      "points": [0.34, 1.56, 0.64, 1],
+      "description": "Subtle bouncy overshoot for micro-interactions, badge popups, and button clicks."
+    }
+  },
+  "framerMotionSprings": {
+    "snappyBento": {
+      "type": "spring",
+      "stiffness": 380,
+      "damping": 30,
+      "mass": 0.8
+    },
+    "gentleFloat": {
+      "type": "spring",
+      "stiffness": 100,
+      "damping": 20,
+      "mass": 1.2
+    },
+    "magneticCursor": {
+      "type": "spring",
+      "stiffness": 500,
+      "damping": 28,
+      "mass": 0.5
+    },
+    "modalSheet": {
+      "type": "spring",
+      "stiffness": 260,
+      "damping": 25,
+      "mass": 1
+    }
+  },
+  "gsapTimelines": {
+    "heroStaggerReveal": {
+      "ease": "power4.out",
+      "duration": 1.2,
+      "stagger": 0.08,
+      "initialVars": { "y": 80, "opacity": 0, "filter": "blur(8px)" },
+      "targetVars": { "y": 0, "opacity": 1, "filter": "blur(0px)" }
+    },
+    "scrollPinParallax": {
+      "scrub": 1,
+      "pin": true,
+      "anticipatePin": 1,
+      "start": "top top",
+      "end": "+=1500"
+    }
+  },
+  "lenisSmoothScroll": {
+    "lerp": 0.08,
+    "duration": 1.2,
+    "smoothWheel": true,
+    "wheelMultiplier": 1.0,
+    "touchMultiplier": 1.8,
+    "infinite": false,
+    "orientation": "vertical"
+  }
+}

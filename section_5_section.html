@@ -1,0 +1,271 @@
+<!-- CLASS: meet-the-team -->
+
+    <!--
+        Inline clipPath defs — used by .meet-the-team__centerpiece. Kept
+        inside the block markup so it ships exactly once per block instance and
+        gets cleaned up when Barba unmounts the container.
+
+        Normalised to objectBoundingBox so the clip stays correct as the image
+        resizes (the image is aspect-locked to the 502×707 design ratio, so the
+        arches/corners reproduce without skew). The silhouette mirrors the
+        design's arch cap top + bottom with rounded corners and a straight
+        middle. The default `d` here is the final (arched) state — the JS
+        scroll-morph rewrites it from flat → arched on scroll. See
+        assets/js/components/MeetTheTeam.js.
+    -->
+    <svg class="meet-the-team__clip-defs" width="0" height="0" aria-hidden="true" focusable="false">
+        <defs>
+            <clipPath id="meet-the-team-clip" clipPathUnits="objectBoundingBox">
+                <path class="meet-the-team__clip-path" d="M0.0000 0.0176 C0.0000 0.0115 0.0252 0.0062 0.0594 0.0054 C0.3516 -0.0018 0.6482 -0.0018 0.9406 0.0054 C0.9749 0.0062 1.0000 0.0115 1.0000 0.0176 L1.0000 0.9296 C1.0000 0.9542 0.9749 0.9751 0.9406 0.9785 C0.6482 1.0072 0.3516 1.0072 0.0594 0.9785 C0.0252 0.9751 0.0000 0.9542 0.0000 0.9296 Z"></path>
+            </clipPath>
+        </defs>
+    </svg>
+
+    <div class="meet-the-team__inner" data-container="xl">
+
+                    
+<span class="callout meet-the-team__callout" data-tone="primary">
+            <span class="callout__icon" data-icon-pop="" aria-hidden="true" style="translate: none; rotate: none; scale: none; transform-origin: 50% 50%; transform: rotate(-25deg) scale(0, 0);">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M50.6505 13.2649V12.7815C50.6505 11.9904 50.0138 11.3488 49.2288 11.3488H48.749C47.964 11.3488 47.3272 10.7072 47.3272 9.9161V9.43268C47.3272 8.64163 46.6905 8 45.9055 8H34.9907C34.2056 8 33.5689 8.64163 33.5689 9.43268V9.9161C33.5689 10.7072 32.9321 11.3488 32.1471 11.3488H28.8267C28.0417 11.3488 27.405 10.7072 27.405 9.9161V9.43268C27.405 8.64163 26.7682 8 25.9832 8H15.0684C14.2833 8 13.6466 8.64163 13.6466 9.43268V9.9161C13.6466 10.7072 13.0098 11.3488 12.2248 11.3488H11.7451C10.96 11.3488 10.3233 11.9904 10.3233 12.7815V13.2649C10.3233 14.0559 9.68654 14.6976 8.90151 14.6976H8.42176C7.63673 14.6976 7 15.3392 7 16.1302V30.4746C7 31.2657 7.63673 31.9073 8.42176 31.9073H8.90151C9.68654 31.9073 10.3233 32.5489 10.3233 33.34V33.8234C10.3233 34.6145 10.96 35.2561 11.7451 35.2561H12.2248C13.0098 35.2561 13.6466 35.8977 13.6466 36.6888V37.1722C13.6466 37.9632 14.2833 38.6049 15.0684 38.6049H15.5481C16.3331 38.6049 16.9699 39.2465 16.9699 40.0376V40.521C16.9699 41.312 17.6066 41.9537 18.3916 41.9537H18.8714C19.6564 41.9537 20.2932 42.5953 20.2932 43.3863V43.8698C20.2932 44.6608 20.9299 45.3024 21.7149 45.3024H22.1947C22.9797 45.3024 23.6164 45.9441 23.6164 46.7351V47.2185C23.6164 48.0096 24.2532 48.6512 25.0382 48.6512H25.518C26.303 48.6512 26.9397 49.2928 26.9397 50.0839V50.5673C26.9397 51.3584 27.5765 52 28.3615 52H32.6385C33.4235 52 34.0602 51.3584 34.0602 50.5673V50.0839C34.0602 49.2928 34.697 48.6512 35.482 48.6512H35.9618C36.7468 48.6512 37.3836 48.0096 37.3836 47.2185V46.7351C37.3836 45.9441 38.0203 45.3024 38.8053 45.3024H39.2851C40.0701 45.3024 40.7068 44.6608 40.7068 43.8698V43.3863C40.7068 42.5953 41.3436 41.9537 42.1286 41.9537H42.6084C43.3934 41.9537 44.0301 41.312 44.0301 40.521V40.0376C44.0301 39.2465 44.6669 38.6049 45.4519 38.6049H45.9316C46.7167 38.6049 47.3534 37.9632 47.3534 37.1722V36.6888C47.3534 35.8977 47.9902 35.2561 48.7752 35.2561H49.2549C50.04 35.2561 50.6767 34.6145 50.6767 33.8234V33.34C50.6767 32.5489 51.3135 31.9073 52.0985 31.9073H52.5782C53.3633 31.9073 54 31.2657 54 30.4746V16.1302C54 15.3392 53.3633 14.6976 52.5782 14.6976H52.0985C51.3135 14.6976 50.6767 14.0559 50.6767 13.2649H50.6505ZM50.1708 18.5239V29.9912C50.1708 30.7823 49.5341 31.4239 48.749 31.4239C47.964 31.4239 47.3272 30.7823 47.3272 29.9912V28.5585V28.078V16.6107C47.3272 15.8197 47.964 15.1781 48.749 15.1781C49.5341 15.1781 50.1708 15.8197 50.1708 16.6107V18.0434V18.5239ZM10.8147 28.5585V16.6107C10.8147 15.8197 11.4514 15.1781 12.2364 15.1781C13.0215 15.1781 13.6582 15.8197 13.6582 16.6107V18.0434V18.5239V29.9912C13.6582 30.7823 13.0215 31.4239 12.2364 31.4239C11.4514 31.4239 10.8147 30.7823 10.8147 29.9912V28.5585ZM30.734 41.4556H28.8354C28.0504 41.4556 27.4137 40.814 27.4137 40.0229C27.4137 39.2319 28.0504 38.5902 28.8354 38.5902H30.2572H30.734H32.1558C32.9409 38.5902 33.5776 39.2319 33.5776 40.0229C33.5776 40.814 32.9409 41.4556 32.1558 41.4556H30.734ZM17.4554 28.5585V19.9537C17.4554 19.1626 18.0922 18.521 18.8772 18.521H25.518C26.303 18.521 26.9397 19.1626 26.9397 19.9537C26.9397 20.7447 26.303 21.3863 25.518 21.3863H24.0962H23.6194H21.7207C20.9357 21.3863 20.299 22.028 20.299 22.819V29.9912C20.299 30.7823 19.6622 31.4239 18.8772 31.4239C18.0922 31.4239 17.4554 30.7823 17.4554 29.9912V28.5585ZM33.5747 32.8536V33.3371C33.5747 34.1281 32.9379 34.7697 32.1529 34.7697H28.8325C28.0475 34.7697 27.4108 34.1281 27.4108 33.3371V32.8536C27.4108 32.0626 26.774 31.421 25.989 31.421H25.5092C24.7242 31.421 24.0875 30.7793 24.0875 29.9883V26.6424C24.0875 25.8514 24.7242 25.2097 25.5092 25.2097C26.2943 25.2097 26.931 25.8514 26.931 26.6424V27.1258C26.931 27.9169 27.5678 28.5585 28.3528 28.5585H32.6298C33.4148 28.5585 34.0515 27.9169 34.0515 27.1258V26.6424C34.0515 25.8514 34.6883 25.2097 35.4733 25.2097C36.2583 25.2097 36.8951 25.8514 36.8951 26.6424V28.0751V28.5556V29.9883C36.8951 30.7793 36.2583 31.421 35.4733 31.421H34.9936C34.2085 31.421 33.5718 32.0626 33.5718 32.8536H33.5747ZM33.5747 23.2995C33.5747 24.0906 32.9379 24.7322 32.1529 24.7322H28.8325C28.0475 24.7322 27.4108 24.0906 27.4108 23.2995C27.4108 22.5085 28.0475 21.8668 28.8325 21.8668H30.2543H30.7312H32.1529C32.9379 21.8668 33.5747 22.5085 33.5747 23.2995ZM22.1947 31.9015C22.9797 31.9015 23.6164 32.5431 23.6164 33.3341C23.6164 34.1252 22.9797 34.7668 22.1947 34.7668C21.4096 34.7668 20.7729 34.1252 20.7729 33.3341C20.7729 32.5431 21.4096 31.9015 22.1947 31.9015ZM25.5151 35.2473C26.3001 35.2473 26.9368 35.8889 26.9368 36.68C26.9368 37.471 26.3001 38.1127 25.5151 38.1127C24.73 38.1127 24.0933 37.471 24.0933 36.68C24.0933 35.8889 24.73 35.2473 25.5151 35.2473ZM34.0515 36.68C34.0515 35.8889 34.6883 35.2473 35.4733 35.2473C36.2583 35.2473 36.8951 35.8889 36.8951 36.68C36.8951 37.471 36.2583 38.1127 35.4733 38.1127C34.6883 38.1127 34.0515 37.471 34.0515 36.68ZM37.3719 33.3341C37.3719 32.5431 38.0087 31.9015 38.7937 31.9015C39.5787 31.9015 40.2155 32.5431 40.2155 33.3341C40.2155 34.1252 39.5787 34.7668 38.7937 34.7668C38.0087 34.7668 37.3719 34.1252 37.3719 33.3341ZM42.1112 31.421C41.3261 31.421 40.6894 30.7793 40.6894 29.9883V28.5556V28.0751V22.8161C40.6894 22.025 40.0526 21.3834 39.2676 21.3834H35.4704C34.6854 21.3834 34.0486 20.7418 34.0486 19.9507C34.0486 19.1597 34.6854 18.518 35.4704 18.518H36.8922H37.369H42.1083C42.8933 18.518 43.53 19.1597 43.53 19.9507V29.9853C43.53 30.7764 42.8933 31.418 42.1083 31.418L42.1112 31.421ZM46.8533 13.2649C46.8533 14.0559 46.2166 14.6976 45.4316 14.6976H44.0098H43.5329H35.4733C34.6883 14.6976 34.0515 14.0559 34.0515 13.2649C34.0515 12.4738 34.6883 11.8322 35.4733 11.8322H36.8951H37.3719H45.4316C46.2166 11.8322 46.8533 12.4738 46.8533 13.2649ZM33.5747 16.6107C33.5747 17.4018 32.9379 18.0434 32.1529 18.0434H30.7312H30.2543H28.8325C28.0475 18.0434 27.4108 17.4018 27.4108 16.6107C27.4108 15.8197 28.0475 15.1781 28.8325 15.1781H30.2543H30.7312H32.1529C32.9379 15.1781 33.5747 15.8197 33.5747 16.6107ZM26.9368 13.2649C26.9368 14.0559 26.3001 14.6976 25.5151 14.6976H24.0933H23.6164H15.5568C14.7718 14.6976 14.135 14.0559 14.135 13.2649C14.135 12.4738 14.7718 11.8322 15.5568 11.8322H16.9786H17.4554H25.5151C26.3001 11.8322 26.9368 12.4738 26.9368 13.2649ZM15.5568 31.9015C16.3419 31.9015 16.9786 32.5431 16.9786 33.3341C16.9786 34.1252 16.3419 34.7668 15.5568 34.7668C14.7718 34.7668 14.135 34.1252 14.135 33.3341C14.135 32.5431 14.7718 31.9015 15.5568 31.9015ZM18.8743 35.2473C19.6593 35.2473 20.2961 35.8889 20.2961 36.68C20.2961 37.471 19.6593 38.1127 18.8743 38.1127C18.0893 38.1127 17.4525 37.471 17.4525 36.68C17.4525 35.8889 18.0893 35.2473 18.8743 35.2473ZM22.1947 38.5932C22.9797 38.5932 23.6164 39.2348 23.6164 40.0258C23.6164 40.8169 22.9797 41.4585 22.1947 41.4585C21.4096 41.4585 20.7729 40.8169 20.7729 40.0258C20.7729 39.2348 21.4096 38.5932 22.1947 38.5932ZM25.5151 41.9361C26.3001 41.9361 26.9368 42.5777 26.9368 43.3688C26.9368 44.1598 26.3001 44.8014 25.5151 44.8014C24.73 44.8014 24.0933 44.1598 24.0933 43.3688C24.0933 42.5777 24.73 41.9361 25.5151 41.9361ZM27.4137 46.7146C27.4137 45.9236 28.0504 45.2819 28.8354 45.2819H30.2572H30.734H32.1558C32.9409 45.2819 33.5776 45.9236 33.5776 46.7146C33.5776 47.5057 32.9409 48.1473 32.1558 48.1473H30.734H30.2572H28.8354C28.0504 48.1473 27.4137 47.5057 27.4137 46.7146ZM35.4733 41.9361C36.2583 41.9361 36.8951 42.5777 36.8951 43.3688C36.8951 44.1598 36.2583 44.8014 35.4733 44.8014C34.6883 44.8014 34.0515 44.1598 34.0515 43.3688C34.0515 42.5777 34.6883 41.9361 35.4733 41.9361ZM38.7937 38.5932C39.5787 38.5932 40.2155 39.2348 40.2155 40.0258C40.2155 40.8169 39.5787 41.4585 38.7937 41.4585C38.0087 41.4585 37.3719 40.8169 37.3719 40.0258C37.3719 39.2348 38.0087 38.5932 38.7937 38.5932ZM42.1112 35.2473C42.8962 35.2473 43.5329 35.8889 43.5329 36.68C43.5329 37.471 42.8962 38.1127 42.1112 38.1127C41.3261 38.1127 40.6894 37.471 40.6894 36.68C40.6894 35.8889 41.3261 35.2473 42.1112 35.2473ZM45.4316 31.9015C46.2166 31.9015 46.8533 32.5431 46.8533 33.3341C46.8533 34.1252 46.2166 34.7668 45.4316 34.7668C44.6465 34.7668 44.0098 34.1252 44.0098 33.3341C44.0098 32.5431 44.6465 31.9015 45.4316 31.9015Z" fill="currentColor"></path>
+</svg>
+        </span>
+        Ready to meet the team behind the genius?</span>
+        
+        <h2 class="meet-the-team__heading" data-text-reveal="" aria-label="Meet the team" data-text-reveal-ready=""><div class="text-reveal__word-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="text-reveal__word" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform-origin: 0% 100%; transform: translate(0%, 110%) rotate(6deg);">Meet</div></div> <div class="text-reveal__word-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="text-reveal__word" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform-origin: 0% 100%; transform: translate(0%, 110%) rotate(6deg);">the</div></div> <div class="text-reveal__word-mask" aria-hidden="true" style="position: relative; display: inline-block; overflow: clip;"><div class="text-reveal__word" aria-hidden="true" style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform-origin: 0% 100%; transform: translate(0%, 110%) rotate(6deg);">team</div></div></h2>
+
+                    
+<a href="https://weichie.com/about/" class="btn meet-the-team__cta" data-style="primary" data-size="large" data-icon="arrow-right" target="">
+    <span class="btn__text">Meet the team</span>
+            <span class="btn__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <path d="M4 10h12m0 0-4.5-4.5M16 10l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+        </span>
+    </a>
+        
+                    <div class="meet-the-team__centerpiece-wrapper" aria-hidden="true">
+                <div class="meet-the-team__centerpiece" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                    <img decoding="async" class="meet-the-team__centerpiece-image" data-parallax="-20" data-parallax-mode="cover" src="https://weichie.com/wp-content/smush-avif/2026/05/weichie-team-scaled-1-1536x2048.jpg.avif" alt="" width="1536" height="2048" loading="lazy" style="translate: none; rotate: none; scale: none; transform: translate(0%, -20%) scale(1.48, 1.48);">
+                </div>
+            </div>
+        
+                    <div class="meet-the-team__marquee" data-meet-the-team-marquee="">
+                <div class="splide splide--loop splide--ltr splide--draggable is-active is-overflow is-initialized" aria-label="Team members marquee" id="splide01" role="region" aria-roledescription="carousel">
+                    <div class="splide__track splide__track--loop splide__track--ltr splide__track--draggable" id="splide01-track" style="padding-left: 0px; padding-right: 0px;" aria-live="off" aria-atomic="true">
+                        <ul class="splide__list" id="splide01-list" role="presentation" style="transform: translateX(-307.599px);">
+                                                            <li class="splide__slide splide__slide--clone" id="splide01-clone01" role="group" aria-roledescription="slide" aria-label="4 of 6" aria-hidden="true">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/05/mathias-greengalgh-scaled-1-150x150.jpg.avif" alt="Mathias Greenhalgh" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-open" data-location="be" data-hours="{&quot;tz&quot;:&quot;Europe\/Brussels&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="BE team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Mathias Greenhalgh</span>
+            </div>
+                            <span class="card-team-compact__role">Webdeveloper</span>
+                    </div>
+    </div>
+</article>
+                                </li><li class="splide__slide splide__slide--clone is-visible" id="splide01-clone02" role="group" aria-roledescription="slide" aria-label="5 of 6">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/05/sam-ghyselinck-150x150.jpg.avif" alt="Sam Ghyselinck" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-open" data-location="be" data-hours="{&quot;tz&quot;:&quot;Europe\/Brussels&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="BE team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Sam Ghyselinck</span>
+            </div>
+                            <span class="card-team-compact__role">Webdeveloper</span>
+                    </div>
+    </div>
+</article>
+                                </li><li class="splide__slide splide__slide--clone is-visible is-prev" id="splide01-clone03" role="group" aria-roledescription="slide" aria-label="6 of 6">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/05/sven-vandendael-headshot-150x150.jpg.avif" alt="Sven Vandendael" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-open" data-location="be" data-hours="{&quot;tz&quot;:&quot;Europe\/Brussels&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="BE team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Sven Vandendael</span>
+            </div>
+                            <span class="card-team-compact__role">Treasurer</span>
+                    </div>
+    </div>
+</article>
+                                </li><li class="splide__slide is-active is-visible" id="splide01-slide01" role="group" aria-roledescription="slide" aria-label="1 of 6">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/05/yannick-van-meerbeeck-headshot-150x150.jpg.avif" alt="Yannick Van Meerbeeck" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-open" data-location="be" data-hours="{&quot;tz&quot;:&quot;Europe\/Brussels&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="BE team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Yannick Van Meerbeeck</span>
+            </div>
+                            <span class="card-team-compact__role">Co-founder, Head of Tech</span>
+                    </div>
+    </div>
+</article>
+                                </li>
+                                                            <li class="splide__slide is-visible is-next" id="splide01-slide02" role="group" aria-roledescription="slide" aria-label="2 of 6">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/05/bob-weichler-headshot-150x150.jpg.avif" alt="Bob Weichler" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-open" data-location="be" data-hours="{&quot;tz&quot;:&quot;Europe\/Brussels&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="BE team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Bob Weichler</span>
+            </div>
+                            <span class="card-team-compact__role">Co-founder &amp; Chief Executive Officer</span>
+                    </div>
+    </div>
+</article>
+                                </li>
+                                                            <li class="splide__slide is-visible" id="splide01-slide03" role="group" aria-roledescription="slide" aria-label="3 of 6">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/06/edward-park-headshot-150x150.jpg.avif" alt="Edward Park" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-closed" data-location="us" data-hours="{&quot;tz&quot;:&quot;America\/New_York&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="US team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Edward Park</span>
+            </div>
+                            <span class="card-team-compact__role">UX/UI Designer</span>
+                    </div>
+    </div>
+</article>
+                                </li>
+                                                            <li class="splide__slide" id="splide01-slide04" role="group" aria-roledescription="slide" aria-label="4 of 6" aria-hidden="true">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/05/mathias-greengalgh-scaled-1-150x150.jpg.avif" alt="Mathias Greenhalgh" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-open" data-location="be" data-hours="{&quot;tz&quot;:&quot;Europe\/Brussels&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="BE team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Mathias Greenhalgh</span>
+            </div>
+                            <span class="card-team-compact__role">Webdeveloper</span>
+                    </div>
+    </div>
+</article>
+                                </li>
+                                                            <li class="splide__slide" id="splide01-slide05" role="group" aria-roledescription="slide" aria-label="5 of 6" aria-hidden="true">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/05/sam-ghyselinck-150x150.jpg.avif" alt="Sam Ghyselinck" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-open" data-location="be" data-hours="{&quot;tz&quot;:&quot;Europe\/Brussels&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="BE team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Sam Ghyselinck</span>
+            </div>
+                            <span class="card-team-compact__role">Webdeveloper</span>
+                    </div>
+    </div>
+</article>
+                                </li>
+                                                            <li class="splide__slide" id="splide01-slide06" role="group" aria-roledescription="slide" aria-label="6 of 6" aria-hidden="true">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/05/sven-vandendael-headshot-150x150.jpg.avif" alt="Sven Vandendael" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-open" data-location="be" data-hours="{&quot;tz&quot;:&quot;Europe\/Brussels&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="BE team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Sven Vandendael</span>
+            </div>
+                            <span class="card-team-compact__role">Treasurer</span>
+                    </div>
+    </div>
+</article>
+                                </li>
+                                                    <li class="splide__slide splide__slide--clone is-active" id="splide01-clone04" role="group" aria-roledescription="slide" aria-label="1 of 6" aria-hidden="true">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/05/yannick-van-meerbeeck-headshot-150x150.jpg.avif" alt="Yannick Van Meerbeeck" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-open" data-location="be" data-hours="{&quot;tz&quot;:&quot;Europe\/Brussels&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="BE team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Yannick Van Meerbeeck</span>
+            </div>
+                            <span class="card-team-compact__role">Co-founder, Head of Tech</span>
+                    </div>
+    </div>
+</article>
+                                </li><li class="splide__slide splide__slide--clone" id="splide01-clone05" role="group" aria-roledescription="slide" aria-label="2 of 6" aria-hidden="true">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/05/bob-weichler-headshot-150x150.jpg.avif" alt="Bob Weichler" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-open" data-location="be" data-hours="{&quot;tz&quot;:&quot;Europe\/Brussels&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="BE team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Bob Weichler</span>
+            </div>
+                            <span class="card-team-compact__role">Co-founder &amp; Chief Executive Officer</span>
+                    </div>
+    </div>
+</article>
+                                </li><li class="splide__slide splide__slide--clone" id="splide01-clone06" role="group" aria-roledescription="slide" aria-label="3 of 6" aria-hidden="true">
+                                    
+<article class="card-team-compact">
+    <div class="card-team-compact__inner">
+                    <img decoding="async" class="card-team-compact__avatar" src="https://weichie.com/wp-content/smush-avif/2026/06/edward-park-headshot-150x150.jpg.avif" alt="Edward Park" width="68" height="72" loading="lazy">
+                <div class="card-team-compact__body">
+            <div class="card-team-compact__heading">
+                                    
+<span class="pill-location is-closed" data-location="us" data-hours="{&quot;tz&quot;:&quot;America\/New_York&quot;,&quot;open&quot;:&quot;09:00&quot;,&quot;close&quot;:&quot;17:00&quot;,&quot;days&quot;:[&quot;mon&quot;,&quot;tue&quot;,&quot;wed&quot;,&quot;thu&quot;,&quot;fri&quot;]}" role="img" aria-label="US team">
+    <span class="pill-location__dot" aria-hidden="true"></span>
+</span>
+                                <span class="card-team-compact__name">Edward Park</span>
+            </div>
+                            <span class="card-team-compact__role">UX/UI Designer</span>
+                    </div>
+    </div>
+</article>
+                                </li></ul>
+                    </div>
+                </div>
+            </div>
+            </div>

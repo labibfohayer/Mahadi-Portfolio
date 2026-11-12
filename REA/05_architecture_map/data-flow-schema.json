@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "project": "REA Data Flow & State Architecture",
+  "version": "1.0.0",
+  "stateManagement": {
+    "globalStores": [
+      {
+        "storeName": "useAppStore",
+        "type": "React Context / Zustand",
+        "stateVariables": {
+          "activeTheme": { "type": "string", "values": ["dark", "light"], "default": "dark" },
+          "isAudioEnabled": { "type": "boolean", "default": false },
+          "cursorVariant": { "type": "string", "values": ["default", "pointer", "text", "canvas-drag"], "default": "default" },
+          "activeSection": { "type": "string", "default": "hero" },
+          "scrollProgress": { "type": "number", "range": [0, 1], "default": 0 }
+        }
+      }
+    ],
+    "localComponentStates": [
+      {
+        "component": "HeroCanvasScene",
+        "state": {
+          "isCanvasReady": { "type": "boolean", "default": false },
+          "pointerNormalized": { "type": "{ x: number, y: number }", "default": { "x": 0, "y": 0 } },
+          "activeLOD": { "type": "string", "values": ["high", "medium", "low"], "default": "high" }
+        }
+      },
+      {
+        "component": "BentoFilterBar",
+        "state": {
+          "selectedCategory": { "type": "string", "default": "all" },
+          "searchQuery": { "type": "string", "default": "" }
+        }
+      }
+    ]
+  },
+  "interactiveEventTriggers": [
+    {
+      "eventType": "window:scroll",
+      "throttleMs": 0,
+      "handler": "Lenis.on('scroll', onScrollHandler)",
+      "targetConsumers": ["ScrollProgressIndicator", "HeroCanvasCameraParallax", "NavbarGlassElevation"]
+    },
+    {
+      "eventType": "window:pointermove",
+      "throttleMs": 16,
+      "handler": "updateNormalizedPointer(e.clientX, e.clientY)",
+      "targetConsumers": ["CustomCursorFollower", "ShaderMouseUniform", "CardTilt3D"]
+    },
+    {
+      "eventType": "intersection:observer",
+      "threshold": [0.1, 0.5, 0.9],
+      "handler": "IntersectionObserverCallback",
+      "targetConsumers": ["SectionEntryAnimation", "LazyLoadHeavyShaders", "ActiveNavHighlighter"]
+    }
+  ],
+  "apiContracts": [
+    {
+      "endpoint": "/api/projects",
+      "method": "GET",
+      "responseShape": {
+        "success": "boolean",
+        "projects": "ProjectItem[]",
+        "totalCount": "number"
+      }
+    }
+  ]
+}

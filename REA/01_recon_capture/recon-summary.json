@@ -1,0 +1,31 @@
+{
+  "targetUrl": "https://weichie.com/",
+  "capturedAt": "2026-11-12T08:46:12.756Z",
+  "runtimeMode": "playwright-deep-browser",
+  "latencyMs": 7461,
+  "pageTitle": "Weichie - Web & App Development Studio in Brussels & New York",
+  "heuristics": [
+    "Three.js / WebGL2 Canvas",
+    "GSAP",
+    "Lenis Smooth Scroll"
+  ],
+  "webglInfo": {
+    "hasCanvas": true,
+    "webglVersion": "WebGL2"
+  },
+  "networkAssetsIntercepted": {
+    "models3DCount": 0,
+    "shadersCount": 0,
+    "mediaCount": 0,
+    "fontsCount": 3,
+    "svgsCount": 0,
+    "texturesCount": 16
+  },
+  "motionExtracted": {
+    "keyframeCount": 14,
+    "animationCurvesCount": 2,
+    "transitionCurvesCount": 13,
+    "animatedElementsCount": 2
+  },
+  "screenshotFile": "target-screenshot.png"
+}

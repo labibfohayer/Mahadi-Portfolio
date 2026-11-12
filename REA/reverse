@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# REA Root Master Launcher: reverse
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+if [ "$#" -eq 0 ]; then
+  node "$DIR/rea-cli.mjs" help
+else
+  if [[ "$1" == http* ]]; then
+    node "$DIR/01_recon_capture/capture-dom.mjs" "$@"
+  else
+    node "$DIR/rea-cli.mjs" "$@"
+  fi
+fi

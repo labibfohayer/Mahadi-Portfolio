@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "target": {
+    "name": "Example Target App",
+    "url": "https://example.com",
+    "capturedAt": "2026-10-22T10:00:00Z",
+    "analyst": "Principal Reverse Engineering Systems Architect",
+    "category": "Creative Studio / 3D WebGL Portfolio",
+    "objective": "Deconstruct landing hero, 3D WebGL canvas, smooth scroll mechanics, and design token system."
+  },
+  "techStackDetected": {
+    "framework": "Next.js (App Router)",
+    "rendering": "SSR + Client-side Hydration",
+    "animationLibraries": [
+      "GSAP 3.12+",
+      "ScrollTrigger",
+      "Framer Motion",
+      "Lenis Smooth Scroll"
+    ],
+    "webgl3D": {
+      "renderer": "Three.js r168",
+      "canvasType": "WebGL2",
+      "postProcessing": true,
+      "customShaders": true
+    },
+    "styling": [
+      "Tailwind CSS v4",
+      "CSS Custom Properties (Tokens)"
+    ],
+    "fontProviders": [
+      "Custom WOFF2 Self-hosted"
+    ],
+    "bundler": "Turbopack / Webpack"
+  },
+  "viewportsCaptured": [
+    {
+      "device": "Desktop Ultra-Wide",
+      "width": 2560,
+      "height": 1440,
+      "devicePixelRatio": 2
+    },
+    {
+      "device": "Desktop Standard",
+      "width": 1920,
+      "height": 1080,
+      "devicePixelRatio": 1
+    },
+    {
+      "device": "Laptop MacBook Pro",
+      "width": 1440,
+      "height": 900,
+      "devicePixelRatio": 2
+    },
+    {
+      "device": "Tablet iPad Pro",
+      "width": 1024,
+      "height": 1366,
+      "devicePixelRatio": 2
+    },
+    {
+      "device": "Mobile iPhone 15 Pro",
+      "width": 393,
+      "height": 852,
+      "devicePixelRatio": 3
+    }
+  ],
+  "networkFootprint": {
+    "totalInitialRequests": 42,
+    "transferredBytes": 3485760,
+    "resourceBreakdown": {
+      "html": { "count": 1, "bytes": 85400 },
+      "scripts": { "count": 14, "bytes": 1250000 },
+      "styles": { "count": 2, "bytes": 45000 },
+      "imagesTextures": { "count": 18, "bytes": 1400000 },
+      "fonts": { "count": 4, "bytes": 220000 },
+      "models3D": { "count": 1, "bytes": 485360 },
+      "media": { "count": 2, "bytes": 0 }
+    }
+  },
+  "reconstructionPriority": [
+    "01_hero_canvas_scene",
+    "02_smooth_scroll_choreography",
+    "03_interactive_cursor_trail",
+    "04_portfolio_grid_shaders",
+    "05_footer_morph_animation"
+  ]
+}
