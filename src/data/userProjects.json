@@ -2,6 +2,18 @@
   {
     "id": 1,
     "type": "video",
+    "title": "Mahadi Hasan Feature",
+    "category": "Video Editing",
+    "media": "/videos/latest-work/slot-3-video-1.mp4",
+    "poster": "/textures/video-posters/poster-7.webp",
+    "tag": "Showreel",
+    "description": "Signature brand showreel exhibiting multi-disciplinary video editing, color grading, and VFX.",
+    "locked": true,
+    "featured": true
+  },
+  {
+    "id": 2,
+    "type": "video",
     "title": "3D Camera Motion",
     "category": "Motion Graphics",
     "media": "/videos/latest-work/slot-1-video-1.mp4",
@@ -10,7 +22,7 @@
     "description": "Dynamic 3D cinematic camera choreography showcasing spatial environment and brand elements."
   },
   {
-    "id": 2,
+    "id": 3,
     "type": "video",
     "title": "AI Visual Production",
     "category": "Commercials & 3D",
@@ -20,7 +32,7 @@
     "description": "AI-driven commercial video production with hyper-stylized visual fidelity and futuristic pacing."
   },
   {
-    "id": 3,
+    "id": 4,
     "type": "video",
     "title": "Coffee Commercial",
     "category": "Commercials & 3D",
@@ -30,7 +42,7 @@
     "description": "Warm appetizing beverage commercial cut with tactile sound design and rhythmic macro shots."
   },
   {
-    "id": 4,
+    "id": 5,
     "type": "video",
     "title": "Motion Graphics Reel",
     "category": "Motion Graphics",
@@ -40,7 +52,7 @@
     "description": "High-energy kinetic typography, liquid transitions, and rhythmic visual rhythm for brand campaigns."
   },
   {
-    "id": 5,
+    "id": 6,
     "type": "video",
     "title": "Cinematic Story",
     "category": "Video Editing",
@@ -50,7 +62,7 @@
     "description": "Atmospheric narrative montage with subtle grading, emotional audio swell, and deliberate pacing."
   },
   {
-    "id": 6,
+    "id": 7,
     "type": "video",
     "title": "Dramatic Narrative Short",
     "category": "Video Editing",
@@ -58,16 +70,6 @@
     "poster": "/textures/video-posters/poster-6.webp",
     "tag": "Short Form",
     "description": "Short-form high-retention dramatic sequence engineered to capture attention and hook viewers."
-  },
-  {
-    "id": 7,
-    "type": "video",
-    "title": "Mahadi Hasan Feature",
-    "category": "Video Editing",
-    "media": "/videos/latest-work/slot-3-video-1.mp4",
-    "poster": "/textures/video-posters/poster-7.webp",
-    "tag": "Showreel",
-    "description": "Signature brand showreel exhibiting multi-disciplinary video editing, color grading, and VFX."
   },
   {
     "id": 8,

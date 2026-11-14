@@ -543,6 +543,11 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onNavigateHome }) => {
                       <span className="px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-mono text-white/90 uppercase border border-white/15">
                         #{p.id}
                       </span>
+                      {p.locked && (
+                        <span className="px-2 py-0.5 rounded-md bg-amber-500/90 text-[10px] font-semibold text-black uppercase tracking-wider font-mono">
+                          Locked #1
+                        </span>
+                      )}
                       <span className="px-2 py-0.5 rounded-md bg-[#ff4f31]/80 backdrop-blur-md text-[10px] font-medium text-white uppercase tracking-wider flex items-center gap-1">
                         {p.type === 'video' ? <Video className="w-2.5 h-2.5" /> : <ImageIcon className="w-2.5 h-2.5" />}
                         {p.type}
@@ -584,14 +589,23 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onNavigateHome }) => {
                           <Edit3 className="w-3.5 h-3.5 text-[#ff4f31]" />
                           <span>Edit</span>
                         </button>
-                        <button
-                          type="button"
-                          onClick={() => setProjectToDelete(p)}
-                          className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 transition-colors cursor-pointer"
-                          title="Delete Project"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
+                        {p.locked ? (
+                          <span
+                            className="p-1.5 rounded-lg bg-white/5 text-white/30 border border-white/5 cursor-not-allowed"
+                            title="Locked #1 project cannot be deleted"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </span>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => setProjectToDelete(p)}
+                            className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/20 transition-colors cursor-pointer"
+                            title="Delete Project"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>

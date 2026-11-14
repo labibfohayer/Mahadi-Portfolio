@@ -97,14 +97,14 @@ const VolumeUpIcon: React.FC = () => (
 
 /* Mapping from video source to project ID in userProjects.json */
 const VIDEO_SRC_TO_PROJECT_ID: Record<string, number> = {
-  '/videos/latest-work/slot-1-video-1.mp4': 1,
-  '/videos/latest-work/slot-1-video-2.mp4': 2,
-  '/videos/latest-work/slot-1-video-2-portrait.mp4': 2,
-  '/videos/latest-work/slot-1-video-3.mp4': 3,
-  '/videos/latest-work/slot-2-video-1.mp4': 4,
-  '/videos/latest-work/slot-2-video-2.mp4': 5,
-  '/videos/latest-work/slot-2-video-3.mp4': 6,
-  '/videos/latest-work/slot-3-video-1.mp4': 7,
+  '/videos/latest-work/slot-3-video-1.mp4': 1,
+  '/videos/latest-work/slot-1-video-1.mp4': 2,
+  '/videos/latest-work/slot-1-video-2.mp4': 3,
+  '/videos/latest-work/slot-1-video-2-portrait.mp4': 3,
+  '/videos/latest-work/slot-1-video-3.mp4': 4,
+  '/videos/latest-work/slot-2-video-1.mp4': 5,
+  '/videos/latest-work/slot-2-video-2.mp4': 6,
+  '/videos/latest-work/slot-2-video-3.mp4': 7,
   '/videos/latest-work/slot-3-video-2.mp4': 8,
   '/videos/latest-work/slot-3-video-3.mp4': 9,
   '/videos/latest-work/slot-3-video-3-custom.mp4': 9,

@@ -16,6 +16,7 @@ export interface ProjectItem {
   tools?: string;
   aspectRatio?: string;
   featured?: boolean;
+  locked?: boolean;
 }
 
 export interface SiteSettings {
@@ -90,7 +91,7 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
   }
 };
 
-const STORAGE_KEY_PROJECTS = 'mahadi_portfolio_projects_v1';
+const STORAGE_KEY_PROJECTS = 'mahadi_portfolio_projects_v2';
 const STORAGE_KEY_SETTINGS = 'mahadi_portfolio_settings_v1';
 
 interface PortfolioContextType {
@@ -111,10 +112,29 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   // Initialize projects from localStorage or default JSON
   const [projects, setProjects] = useState<ProjectItem[]>(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY_PROJECTS);
+      const saved = localStorage.getItem(STORAGE_KEY_PROJECTS) || localStorage.getItem('mahadi_portfolio_projects_v1');
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
+          // Guarantee that the locked #1 showreel project (Mahadi Hasan Feature) is at index 0
+          const lockedIdx = parsed.findIndex(p => 
+            p.title === 'Mahadi Hasan Feature' || 
+            (p.media && p.media.includes('slot-3-video-1')) ||
+            p.tag === 'Showreel'
+          );
+          if (lockedIdx > 0) {
+            const [lockedItem] = parsed.splice(lockedIdx, 1);
+            lockedItem.id = 1;
+            lockedItem.locked = true;
+            lockedItem.featured = true;
+            parsed.unshift(lockedItem);
+            // Re-index remaining items sequentially
+            parsed.forEach((p, idx) => { p.id = idx + 1; });
+          } else if (lockedIdx === 0) {
+            parsed[0].id = 1;
+            parsed[0].locked = true;
+            parsed[0].featured = true;
+          }
           return parsed;
         }
       }
@@ -184,7 +204,13 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       ...newProjectData,
       id: nextId
     };
-    setProjects(prev => [projectWithId, ...prev]);
+    // Ensure locked #1 project remains locked at index 0
+    setProjects(prev => {
+      if (prev.length > 0 && prev[0].locked) {
+        return [prev[0], projectWithId, ...prev.slice(1)];
+      }
+      return [projectWithId, ...prev];
+    });
     return projectWithId;
   }, [projects]);
 
@@ -193,9 +219,9 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     setProjects(prev => prev.map(p => p.id === id ? { ...p, ...fields } : p));
   }, []);
 
-  // Delete Project
+  // Delete Project (preserve locked #1 project)
   const deleteProject = useCallback((id: number) => {
-    setProjects(prev => prev.filter(p => p.id !== id));
+    setProjects(prev => prev.filter(p => !(p.id === id && p.locked)));
   }, []);
 
   // Update Site Settings
