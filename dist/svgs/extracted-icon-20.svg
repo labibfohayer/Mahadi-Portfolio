@@ -1,7 +1,0 @@
-<svg class="meet-the-team__clip-defs" width="0" height="0" aria-hidden="true" focusable="false">
-        <defs>
-            <clipPath id="meet-the-team-clip" clipPathUnits="objectBoundingBox">
-                <path class="meet-the-team__clip-path" d="M0.0000 0.0176 C0.0000 0.0115 0.0252 0.0062 0.0594 0.0054 C0.3516 -0.0018 0.6482 -0.0018 0.9406 0.0054 C0.9749 0.0062 1.0000 0.0115 1.0000 0.0176 L1.0000 0.9296 C1.0000 0.9542 0.9749 0.9751 0.9406 0.9785 C0.6482 1.0072 0.3516 1.0072 0.0594 0.9785 C0.0252 0.9751 0.0000 0.9542 0.0000 0.9296 Z"></path>
-            </clipPath>
-        </defs>
-    </svg>

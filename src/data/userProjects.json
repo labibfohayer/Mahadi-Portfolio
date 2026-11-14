@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "type": "video",
+    "title": "3D Camera Motion",
+    "category": "Motion Graphics",
+    "media": "/videos/latest-work/slot-1-video-1.mp4",
+    "poster": "/textures/video-posters/poster-1.webp",
+    "tag": "3D & VFX",
+    "description": "Dynamic 3D cinematic camera choreography showcasing spatial environment and brand elements."
+  },
+  {
+    "id": 2,
+    "type": "video",
+    "title": "AI Visual Production",
+    "category": "Commercials & 3D",
+    "media": "/videos/latest-work/slot-1-video-2.mp4",
+    "poster": "/textures/video-posters/poster-2.webp",
+    "tag": "AI & Visuals",
+    "description": "AI-driven commercial video production with hyper-stylized visual fidelity and futuristic pacing."
+  },
+  {
+    "id": 3,
+    "type": "video",
+    "title": "Coffee Commercial",
+    "category": "Commercials & 3D",
+    "media": "/videos/latest-work/slot-1-video-3.mp4",
+    "poster": "/textures/video-posters/poster-3.webp",
+    "tag": "Commercial",
+    "description": "Warm appetizing beverage commercial cut with tactile sound design and rhythmic macro shots."
+  },
+  {
+    "id": 4,
+    "type": "video",
+    "title": "Motion Graphics Reel",
+    "category": "Motion Graphics",
+    "media": "/videos/latest-work/slot-2-video-1.mp4",
+    "poster": "/textures/video-posters/poster-4.webp",
+    "tag": "Kinetic & VFX",
+    "description": "High-energy kinetic typography, liquid transitions, and rhythmic visual rhythm for brand campaigns."
+  },
+  {
+    "id": 5,
+    "type": "video",
+    "title": "Cinematic Story",
+    "category": "Video Editing",
+    "media": "/videos/latest-work/slot-2-video-2.mp4",
+    "poster": "/textures/video-posters/poster-5.webp",
+    "tag": "Narrative",
+    "description": "Atmospheric narrative montage with subtle grading, emotional audio swell, and deliberate pacing."
+  },
+  {
+    "id": 6,
+    "type": "video",
+    "title": "Dramatic Narrative Short",
+    "category": "Video Editing",
+    "media": "/videos/latest-work/slot-2-video-3.mp4",
+    "poster": "/textures/video-posters/poster-6.webp",
+    "tag": "Short Form",
+    "description": "Short-form high-retention dramatic sequence engineered to capture attention and hook viewers."
+  },
+  {
+    "id": 7,
+    "type": "video",
+    "title": "Mahadi Hasan Feature",
+    "category": "Video Editing",
+    "media": "/videos/latest-work/slot-3-video-1.mp4",
+    "poster": "/textures/video-posters/poster-7.webp",
+    "tag": "Showreel",
+    "description": "Signature brand showreel exhibiting multi-disciplinary video editing, color grading, and VFX."
+  },
+  {
+    "id": 8,
+    "type": "video",
+    "title": "Documentary Narrative",
+    "category": "Video Editing",
+    "media": "/videos/latest-work/slot-3-video-2.mp4",
+    "poster": "/textures/video-posters/poster-8.webp",
+    "tag": "Documentary",
+    "description": "In-depth human interest documentary cut with authentic storytelling and cinematic sound design."
+  },
+  {
+    "id": 9,
+    "type": "video",
+    "title": "Cinematic Title Sequence",
+    "category": "Motion Graphics",
+    "media": "/videos/latest-work/slot-3-video-3.mp4",
+    "poster": "/textures/video-posters/poster-9.webp",
+    "tag": "Title Sequence",
+    "description": "Polished title sequence and atmospheric sequence blending sound foley with dynamic lighting."
+  },
+  {
+    "id": 10,
+    "type": "image",
+    "title": "Creative Visual Poster",
+    "category": "Graphic Design",
+    "media": "/textures/graphic-hero/hero-1.webp",
+    "poster": "/textures/graphic-hero/hero-1.webp",
+    "tag": "Poster Art",
+    "description": "Bold typographical poster balancing modern Swiss minimalism with high-impact color contrast."
+  },
+  {
+    "id": 11,
+    "type": "image",
+    "title": "Vector & Character Art",
+    "category": "Graphic Design",
+    "media": "/textures/graphic-hero/hero-2.webp",
+    "poster": "/textures/graphic-hero/hero-2.webp",
+    "tag": "Illustration",
+    "description": "Intricate vector illustration system featuring clean curves, playful lighting, and distinct silhouette."
+  },
+  {
+    "id": 12,
+    "type": "image",
+    "title": "Modern Artboard System",
+    "category": "Brand Identity",
+    "media": "/textures/graphic-hero/hero-3.webp",
+    "poster": "/textures/graphic-hero/hero-3.webp",
+    "tag": "Art Direction",
+    "description": "Modular grid artboard compositions establishing unified branding across print and screen."
+  },
+  {
+    "id": 13,
+    "type": "image",
+    "title": "Aura Luxury Packaging",
+    "category": "Brand Identity",
+    "media": "/textures/graphic-hero/hero-4.webp",
+    "poster": "/textures/graphic-hero/hero-4.webp",
+    "tag": "Packaging",
+    "description": "Premium cosmetic and product packaging with tactile textures and elegant foil finish."
+  },
+  {
+    "id": 14,
+    "type": "image",
+    "title": "Digital Ad Campaign",
+    "category": "Graphic Design",
+    "media": "/textures/graphic-hero/hero-5.webp",
+    "poster": "/textures/graphic-hero/hero-5.webp",
+    "tag": "Social Media",
+    "description": "High-conversion visual advertising suite crafted for maximum CTR across social feeds."
+  },
+  {
+    "id": 15,
+    "type": "image",
+    "title": "Editorial Layout Art",
+    "category": "Graphic Design",
+    "media": "/textures/graphic-hero/hero-6.webp",
+    "poster": "/textures/graphic-hero/hero-6.webp",
+    "tag": "Editorial",
+    "description": "Sophisticated magazine spread typography with editorial negative space and column pacing."
+  },
+  {
+    "id": 16,
+    "type": "image",
+    "title": "Expressive Typography",
+    "category": "Graphic Design",
+    "media": "/textures/graphic-hero/hero-7.webp",
+    "poster": "/textures/graphic-hero/hero-7.webp",
+    "tag": "Custom Type",
+    "description": "Bespoke custom lettering and kinetic ligature forms tailored for contemporary street style."
+  },
+  {
+    "id": 17,
+    "type": "image",
+    "title": "Impact Street Poster",
+    "category": "Commercials & 3D",
+    "media": "/textures/graphic-hero/hero-8.webp",
+    "poster": "/textures/graphic-hero/hero-8.webp",
+    "tag": "Commercial",
+    "description": "Dynamic street-level commercial poster communicating brand message in under two seconds."
+  },
+  {
+    "id": 18,
+    "type": "image",
+    "title": "Corporate Identity Suite",
+    "category": "Brand Identity",
+    "media": "/textures/graphic-hero/hero-9.webp",
+    "poster": "/textures/graphic-hero/hero-9.webp",
+    "tag": "Brand Suite",
+    "description": "Comprehensive corporate design language spanning stationery, cards, digital badges, and palettes."
+  },
+  {
+    "id": 19,
+    "type": "image",
+    "title": "Organic Beverage Label",
+    "category": "Brand Identity",
+    "media": "/textures/graphic-hero/hero-10.webp",
+    "poster": "/textures/graphic-hero/hero-10.webp",
+    "tag": "Packaging",
+    "description": "Vibrant artisanal beverage bottle packaging with bold color blocking and illustrated seals."
+  },
+  {
+    "id": 20,
+    "type": "image",
+    "title": "Mascot & Icon Design",
+    "category": "Graphic Design",
+    "media": "/textures/graphic-hero/hero-11.webp",
+    "poster": "/textures/graphic-hero/hero-11.webp",
+    "tag": "Iconography",
+    "description": "Distinctive vector character mascot accompanied by matching SVG UI icon set."
+  },
+  {
+    "id": 21,
+    "type": "image",
+    "title": "E-Commerce Banner Suite",
+    "category": "Commercials & 3D",
+    "media": "/textures/graphic-hero/hero-12.webp",
+    "poster": "/textures/graphic-hero/hero-12.webp",
+    "tag": "E-Commerce",
+    "description": "Commercial promo banners with 3D product staging and crisp promotional badges."
+  },
+  {
+    "id": 22,
+    "type": "image",
+    "title": "Cyberpunk Neon Visuals",
+    "category": "Motion Graphics",
+    "media": "/textures/graphic-hero/hero-13.webp",
+    "poster": "/textures/graphic-hero/hero-13.webp",
+    "tag": "3D Concept",
+    "description": "Atmospheric cyberpunk lighting design featuring chromatic aberration and futuristic neon glow."
+  },
+  {
+    "id": 23,
+    "type": "image",
+    "title": "Signature Monogram System",
+    "category": "Brand Identity",
+    "media": "/textures/graphic-hero/hero-14.webp",
+    "poster": "/textures/graphic-hero/hero-14.webp",
+    "tag": "Logo Design",
+    "description": "Minimalist geometric monogram crafted with mathematical ratios and timeless silhouette."
+  },
+  {
+    "id": 24,
+    "type": "image",
+    "title": "Urban Billboard Showcase",
+    "category": "Commercials & 3D",
+    "media": "/textures/graphic-hero/hero-15.webp",
+    "poster": "/textures/graphic-hero/hero-15.webp",
+    "tag": "Outdoor Ad",
+    "description": "Expansive large-format architectural billboard mockups engineered for high-visibility campaigns."
+  }
+]

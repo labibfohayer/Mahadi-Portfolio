@@ -16,7 +16,7 @@ const CAPABILITIES: NodeCapability[] = [
     id: 'strategy',
     title: 'Product Strategy',
     subtitle: 'Discovery & System Blueprinting',
-    description: 'We align user needs with business KPIs to design scalable technical roadmaps before a single line of code is written.',
+    description: 'I align user needs with business KPIs to design scalable technical roadmaps before a single line of code is written.',
     icon: <Layers className="w-5 h-5" />,
     image: '/textures/application-service-cover-1024x1024.jpg',
     deliverables: ['Domain Modeling', 'Architecture Specs', 'KPI Definition', 'Stack Feasibility']
@@ -69,13 +69,13 @@ export const InteractiveDiagram: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <div className="text-primary text-xs uppercase tracking-widest font-bold mb-3">
-            Our Core Disciplines
+            My Core Disciplines
           </div>
           <h2 className="text-3xl sm:text-5xl font-display font-medium text-white tracking-tight mb-6">
             Engineered from concept to scale.
           </h2>
           <p className="text-muted text-base leading-relaxed">
-            Every project is executed through our battle-tested multi-disciplinary pipeline, combining rigorous engineering with creative innovation.
+            Every project is executed through my battle-tested multi-disciplinary pipeline, combining rigorous engineering with creative innovation.
           </p>
         </div>
 

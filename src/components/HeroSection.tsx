@@ -1,76 +1,206 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import { HeroThreeCanvas, SERVICES } from './HeroThreeCanvas';
+import { usePortfolio } from '../context/PortfolioContext';
+import { 
+  WebDevIcon, 
+  EcommerceIcon, 
+  AppDevIcon, 
+  AiIcon, 
+  BlockchainIcon 
+} from './FooterSvgs';
 
-// Exact SVGs from Weichie's production DOM for the 5 labels
+// Authentic full-fidelity SVGs from Weichie
 const LABEL_ICONS: Record<string, React.ReactNode> = {
-  'web-development': (
-    <svg className="w-4 h-4" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M49.44 19.57V17.95H46.47V14.97H43.49V12H17.77V14.97H14.8V17.95H11.82V20.92H7.5V37.83H10.49V42.03H13.47V45.02H16.46V48H42.32V45.02H45.31V42.03H48.3V37.83H52.5V22.26H49.52V19.57H49.44ZM37.26 34.59H31.58V31.62H37.26V34.59ZM22.65 34.58H28.34V31.61H22.65V34.58ZM28.32 25.53V28.37H22.65V25.53H28.32ZM37.26 28.37H31.58V25.53H37.26V28.37Z" fill="currentColor"/>
-    </svg>
-  ),
-  'ecommerce': (
-    <svg className="w-4 h-4" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M49.5 22.5V19.5H46.5V16.5H43.5V13.5H16.5V16.5H13.5V19.5H10.5V22.5H7.5V46.5H52.5V22.5H49.5ZM24 21H36V24H24V21ZM45 42H15V27H45V42Z" fill="currentColor"/>
-    </svg>
-  ),
-  'applications': (
-    <svg className="w-4 h-4" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M48 12H12V48H48V12ZM43.5 43.5H16.5V19.5H43.5V43.5Z" fill="currentColor"/>
-    </svg>
-  ),
-  'artificial-intelligence': (
-    <svg className="w-4 h-4" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M30 6L33 21L48 24L33 27L30 42L27 27L12 24L27 21L30 6Z" fill="currentColor"/>
-    </svg>
-  ),
-  'blockchain': (
-    <svg className="w-4 h-4" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M30 10L42 17V31L30 38L18 31V17L30 10ZM30 20L24 23.5V30.5L30 34L36 30.5V23.5L30 20Z" fill="currentColor"/>
-    </svg>
-  )
+  'video-editing': <WebDevIcon className="w-5 h-5 text-inherit" />,
+  'motion-graphics': <EcommerceIcon className="w-5 h-5 text-inherit" />,
+  'graphic-design': <AppDevIcon className="w-5 h-5 text-inherit" />,
+  'color-sound': <AiIcon className="w-5 h-5 text-inherit" />,
+  'brand-identity': <BlockchainIcon className="w-5 h-5 text-inherit" />
 };
 
 export const HeroSection: React.FC = () => {
-  const [activeSlug, setActiveSlug] = useState('blockchain');
+  const { siteSettings } = usePortfolio();
+  const [activeSlug, setActiveSlug] = useState('video-editing');
+  const stageRef = useRef<HTMLDivElement>(null);
+  const canvasMountRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const labelsRef = useRef<HTMLUListElement>(null);
+
+  // Exact Weichie Homepage Intro Entrance Timeline
+  // 1. Text reveals into view
+  // 2. Text fades out
+  // 3. Round 3D wheel rises up from bottom to top
+  // 4. Category labels fade in
+  useEffect(() => {
+    const canvasMount = canvasMountRef.current;
+    const labels = labelsRef.current;
+    const titleLines = titleRef.current?.querySelectorAll<HTMLElement>('.hero-homepage__title-line');
+
+    if (!canvasMount) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const parkedY = () => canvasMount.offsetHeight || 640;
+
+    const updateClip = () => {
+      const rect = canvasMount.getBoundingClientRect();
+      const diff = Math.max(0, rect.bottom - window.innerHeight);
+      canvasMount.style.clipPath = diff > 0 ? `inset(0 0 ${diff}px 0)` : 'none';
+    };
+
+    gsap.set(canvasMount, { y: parkedY(), autoAlpha: 0 });
+    updateClip();
+
+    if (labels) gsap.set(labels, { opacity: 0 });
+    if (titleLines) {
+      titleLines.forEach((line) => {
+        gsap.set(line, { 
+          opacity: 0, 
+          y: 45,
+          filter: 'blur(10px)',
+          scale: 0.98
+        });
+      });
+    }
+
+    if (prefersReduced) {
+      gsap.set(canvasMount, { y: 0, autoAlpha: 1 });
+      canvasMount.style.clipPath = '';
+      if (titleLines) gsap.set(titleLines, { opacity: 0, y: 0, filter: 'blur(0px)', scale: 1 });
+      if (labels) gsap.set(labels, { opacity: 1 });
+      return;
+    }
+
+    const tl = gsap.timeline();
+
+    if (titleLines && titleLines.length > 0) {
+      // 1. SaaS Kinetic Title reveal with optical blur-to-focus dissipation
+      tl.to(titleLines, {
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        scale: 1,
+        duration: 1.3,
+        stagger: 0.14,
+        ease: 'power4.out',
+        delay: 0.15
+      });
+
+      // 2. SaaS Dissipation with upward lift and soft blur into the 3D stage
+      tl.to(titleLines, {
+        opacity: 0,
+        y: -28,
+        filter: 'blur(8px)',
+        scale: 1.02,
+        duration: 0.45,
+        stagger: { each: 0.07, from: 'end' },
+        ease: 'power3.inOut'
+      }, '+=1.1');
+    }
+
+    // 3. 3D cylindrical wheel rises up from bottom
+    tl.to(canvasMount, {
+      y: 0,
+      autoAlpha: 1,
+      duration: 1.25,
+      ease: 'power3.out',
+      onUpdate: updateClip,
+      onComplete: () => {
+        canvasMount.style.clipPath = '';
+      }
+    }, titleLines && titleLines.length > 0 ? '<0.15' : 0);
+
+    // 4. Service category labels fade in
+    if (labels) {
+      tl.to(labels, {
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out'
+      });
+    }
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   return (
-    <section className="relative pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden bg-[#fdf9f9]">
-      {/* 3D WebGL Cylindrical Hero Carousel */}
-      <div className="w-full relative">
-        <HeroThreeCanvas
-          activeSlug={activeSlug}
-          onActiveChange={(slug) => setActiveSlug(slug)}
-        />
-      </div>
+    <div className="block-wrapper block-hero-homepage relative z-[2] w-full bg-[var(--clr-bg,#fdf9f9)] transition-colors duration-300">
+      <section className="hero-homepage relative pt-16 sm:pt-20 pb-12 sm:pb-16 overflow-hidden">
+        {/* Intro Heading revealed at the center of the hero stage */}
+        <h1 
+          ref={titleRef}
+          className="hero-homepage__title absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 text-center pointer-events-none whitespace-nowrap flex flex-col items-center select-none"
+          style={{
+            fontFamily: "'Season Mix', Georgia, serif",
+            fontSize: 'clamp(2.5rem, 6.25vw + 1rem, 7.25rem)',
+            lineHeight: 1.05,
+            letterSpacing: '-0.02em',
+            gap: 'clamp(0.75rem, 1.25vw, 1.5rem)',
+            color: 'var(--clr-text, #12110b)'
+          }}
+        >
+          <span className="hero-homepage__title-line block will-change-transform">{siteSettings.hero.preTitle || 'The official portfolio'}</span>
+          <span className="hero-homepage__title-line block will-change-transform">
+            of <span className="hero-mahadi-bevel-orange">{siteSettings.hero.name || 'Mahadi Hasan'}</span>,
+          </span>
+          <span className="hero-homepage__title-line block will-change-transform">{siteSettings.hero.subtitle || 'crafting visual excellence'}</span>
+        </h1>
 
-      {/* Row of Service Labels Matching Image 1 */}
-      <div className="max-w-6xl mx-auto px-4 mt-6">
-        <ul className="flex flex-wrap items-center justify-center gap-x-7 sm:gap-x-10 gap-y-3">
-          {SERVICES.map((s) => {
-            const isActive = s.slug === activeSlug;
-            return (
-              <li key={s.slug}>
-                <button
-                  type="button"
-                  onClick={() => setActiveSlug(s.slug)}
-                  className={`inline-flex items-center gap-2 text-xs sm:text-sm font-medium transition-colors ${
-                    isActive
-                      ? 'text-[#ff4f31]'
-                      : 'text-[#555555] hover:text-[#111111]'
-                  }`}
-                >
-                  <span className={`inline-block transition-transform duration-300 ${
-                    isActive ? 'scale-110' : ''
-                  }`}>
-                    {LABEL_ICONS[s.slug]}
-                  </span>
-                  <span>{s.name}</span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </section>
+        {/* 3D WebGL Cylindrical Hero Carousel Stage */}
+        <div 
+          ref={stageRef} 
+          className="hero-homepage__stage w-full relative select-none"
+          style={{
+            height: 'min(clamp(26.25rem, 23.4375vw + 21.5625rem, 45rem), calc(100dvh - 3rem))'
+          }}
+        >
+          <div 
+            ref={canvasMountRef}
+            className="hero-homepage__canvas absolute inset-0 z-[1] will-change-transform"
+          >
+            <HeroThreeCanvas
+              activeSlug={activeSlug}
+              onActiveChange={(slug) => setActiveSlug(slug)}
+            />
+          </div>
+        </div>
+
+        {/* Row of Service Labels Matching Weichie */}
+        <div className="max-w-6xl mx-auto px-4 mt-6">
+          <ul 
+            ref={labelsRef}
+            className="hero-homepage__labels flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-12 gap-y-4 opacity-0 transition-opacity"
+          >
+            {SERVICES.map((s) => {
+              const isActive = s.slug === activeSlug;
+              return (
+                <li key={s.slug} className="hero-homepage__label inline-flex">
+                  <button
+                    type="button"
+                    onClick={() => setActiveSlug(s.slug)}
+                    className={`hero-homepage__label-link inline-flex items-center gap-2.5 sm:gap-3 text-[16px] sm:text-[18px] md:text-[19px] font-semibold tracking-[-0.01em] transition-colors ${
+                      isActive
+                        ? 'text-[#ff4f31]'
+                        : 'text-[#666666] dark:text-[#999994] hover:text-[var(--clr-text,#111111)]'
+                    }`}
+                  >
+                    <span className={`hero-homepage__label-icon inline-flex items-center justify-center transition-transform duration-300 ${
+                      isActive ? 'scale-110' : ''
+                    }`}>
+                      {LABEL_ICONS[s.slug]}
+                    </span>
+                    <span className="hero-homepage__label-text whitespace-nowrap">{s.name}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+    </div>
   );
 };
+
+export default HeroSection;

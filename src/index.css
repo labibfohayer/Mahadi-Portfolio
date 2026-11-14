@@ -36,3 +36,111 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #333333;
 }
+
+/* ========================================================================== */
+/* BEVEL ALPHA (Hero Intro "Mahadi Hasan" Brand Orange Bold Accent)           */
+/* ========================================================================== */
+.hero-mahadi-bevel-orange {
+  color: #ff4f31;
+  font-weight: 700;
+  display: inline;
+  text-shadow:
+    -1px -1px 0px rgba(255, 240, 230, 0.95),
+    -1.5px -1.5px 0.5px rgba(255, 255, 255, 0.7),
+    1px 1px 0px rgba(160, 30, 10, 0.85),
+    1.5px 2px 1px rgba(110, 20, 5, 0.65);
+}
+
+[data-theme="dark"] .hero-mahadi-bevel-orange {
+  text-shadow:
+    -1px -1px 0px rgba(255, 225, 215, 0.85),
+    -1.5px -1.5px 0.5px rgba(255, 255, 255, 0.55),
+    1px 1.5px 0px rgba(140, 20, 5, 0.95),
+    1.5px 2px 1px rgba(0, 0, 0, 0.8);
+}
+
+/* ========================================================================== */
+/* ABOUT "MY STORY" CONTINUOUS 120FPS ZERO-JITTER DEEP ORANGE LIGHT WAVE      */
+/* Ultra-smooth inline color wave floating like liquid light without jumping  */
+/* ========================================================================== */
+
+@keyframes story-text-light-flow {
+  0% {
+    color: #72706a;
+    opacity: 0.45;
+  }
+  4.5% {
+    color: #ea3a1b; /* Deep Orange Wave Peak */
+    opacity: 1;
+  }
+  9% {
+    color: #72706a;
+    opacity: 0.45;
+  }
+  100% {
+    color: #72706a;
+    opacity: 0.45;
+  }
+}
+
+@keyframes story-text-light-flow-dark {
+  0% {
+    color: #8c8a82;
+    opacity: 0.45;
+  }
+  4.5% {
+    color: #ff4f31; /* Deep Orange Wave Peak */
+    opacity: 1;
+  }
+  9% {
+    color: #8c8a82;
+    opacity: 0.45;
+  }
+  100% {
+    color: #8c8a82;
+    opacity: 0.45;
+  }
+}
+
+.story-light-flow-word {
+  display: inline;
+  will-change: color, opacity;
+  text-shadow: none !important;
+  animation-name: story-text-light-flow;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+[data-theme="dark"] .story-light-flow-word {
+  animation-name: story-text-light-flow-dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-light-flow-word {
+    animation: none !important;
+    opacity: 1 !important;
+    color: inherit !important;
+    text-shadow: none !important;
+  }
+}
+
+/* ========================================================================== */
+/* SHADOW STUDIO 3 (Project & Artwork Card Progressive Shadows)               */
+/* ========================================================================== */
+.shadow-studio-3-card {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.12),
+    0 8px 18px rgba(0, 0, 0, 0.14),
+    0 18px 38px rgba(0, 0, 0, 0.12),
+    0 36px 72px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shadow-studio-3-card:hover {
+  box-shadow:
+    0 4px 8px rgba(255, 79, 49, 0.22),
+    0 12px 26px rgba(0, 0, 0, 0.18),
+    0 26px 52px rgba(255, 79, 49, 0.18),
+    0 52px 104px rgba(0, 0, 0, 0.16);
+}

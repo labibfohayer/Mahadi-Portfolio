@@ -1,0 +1,186 @@
+[
+  {
+    "id": 1,
+    "title": "Aidan",
+    "subtitle": "Artificial intelligence",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/06/aidan-cover.jpg.avif",
+    "link": "https://weichie.com/case/aidan/",
+    "localImg": "/textures/cases/case-1.avif"
+  },
+  {
+    "id": 2,
+    "title": "AverageRob",
+    "subtitle": "eCommerce",
+    "img": "https://weichie.com/wp-content/uploads/2026/10/averagerob-thumb.webp",
+    "link": "https://weichie.com/case/averagerob/",
+    "localImg": "/textures/cases/case-2.webp"
+  },
+  {
+    "id": 3,
+    "title": "Dogchef",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/uploads/2026/06/dogchef-cover-1024x645.webp",
+    "link": "https://weichie.com/case/dogchef/",
+    "localImg": "/textures/cases/case-3.webp"
+  },
+  {
+    "id": 4,
+    "title": "Los Tontos",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/uploads/2026/06/restaurant-5-1024x684.webp",
+    "link": "https://weichie.com/case/lostontos/",
+    "localImg": "/textures/cases/case-4.webp"
+  },
+  {
+    "id": 5,
+    "title": "De Druglijn",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/uploads/2026/06/Druglijnbrochures-1024x1024.webp",
+    "link": "https://weichie.com/case/druglijn/",
+    "localImg": "/textures/cases/case-5.webp"
+  },
+  {
+    "id": 6,
+    "title": "Mechelen Feest",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/uploads/2026/06/mechelen-feest-cover-1024x683.webp",
+    "link": "https://weichie.com/case/mechelen-feest/",
+    "localImg": "/textures/cases/case-6.webp"
+  },
+  {
+    "id": 7,
+    "title": "Viewbox",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/uploads/2026/06/viewbox-thumb.webp",
+    "link": "https://weichie.com/case/viewbox/",
+    "localImg": "/textures/cases/case-7.webp"
+  },
+  {
+    "id": 8,
+    "title": "Adaptive Green",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/uploads/2026/06/adaptivegreen-1-750x1024.webp",
+    "link": "https://weichie.com/case/adaptive-green/",
+    "localImg": "/textures/cases/case-8.webp"
+  },
+  {
+    "id": 9,
+    "title": "Weevo",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/06/Weevo-34-scaled-1-2048x1366.jpg.avif",
+    "link": "https://weichie.com/case/weevo/",
+    "localImg": "/textures/cases/case-9.avif"
+  },
+  {
+    "id": 10,
+    "title": "Hof Van Villers",
+    "subtitle": "Application development",
+    "img": "https://weichie.com/wp-content/uploads/2026/06/hofvanvillers-service-flats.webp",
+    "link": "https://weichie.com/case/hof-van-villers/",
+    "localImg": "/textures/cases/case-10.webp"
+  },
+  {
+    "id": 11,
+    "title": "Brainspotting",
+    "subtitle": "eCommerce",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/06/Brain.jpg.avif",
+    "link": "https://weichie.com/case/brainspotting/",
+    "localImg": "/textures/cases/case-11.avif"
+  },
+  {
+    "id": 12,
+    "title": "dmvA Architecten",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/06/dmvA-cover-tall.jpg.avif",
+    "link": "https://weichie.com/case/dmva-architecten/",
+    "localImg": "/textures/cases/case-12.avif"
+  },
+  {
+    "id": 13,
+    "title": "Studio Binnekyk",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/06/studio-binnekyk-1024x683.jpeg.avif",
+    "link": "https://weichie.com/case/studio-binnekyk/",
+    "localImg": "/textures/cases/case-13.avif"
+  },
+  {
+    "id": 14,
+    "title": "Photonhub",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/06/bphot-cover-1024x439.jpg.avif",
+    "link": "https://weichie.com/case/photonhub/",
+    "localImg": "/textures/cases/case-14.avif"
+  },
+  {
+    "id": 15,
+    "title": "Spantech",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/uploads/2026/06/spantech-cover-2.webp",
+    "link": "https://weichie.com/case/spantech/",
+    "localImg": "/textures/cases/case-15.webp"
+  },
+  {
+    "id": 16,
+    "title": "Madonna",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/uploads/2026/06/madonna-cover-683x1024.webp",
+    "link": "https://weichie.com/case/madonna/",
+    "localImg": "/textures/cases/case-16.webp"
+  },
+  {
+    "id": 17,
+    "title": "Media Facilities",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/06/mf-cover.jpg.avif",
+    "link": "https://weichie.com/case/media-facilities/",
+    "localImg": "/textures/cases/case-17.avif"
+  },
+  {
+    "id": 18,
+    "title": "Eu.bac CERT",
+    "subtitle": "Application development",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/06/eubac-social-cover-1024x538.jpg.avif",
+    "link": "https://weichie.com/case/eu-bac-cert/",
+    "localImg": "/textures/cases/case-18.avif"
+  },
+  {
+    "id": 19,
+    "title": "Alushop",
+    "subtitle": "eCommerce",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/06/Alushop-webshop-1024x541.png.avif",
+    "link": "https://weichie.com/case/alushop/",
+    "localImg": "/textures/cases/case-19.avif"
+  },
+  {
+    "id": 20,
+    "title": "Kroton Hub",
+    "subtitle": "Application development",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/07/kroton-signin-1024x714.jpg.avif",
+    "link": "https://weichie.com/case/kroton-hub/",
+    "localImg": "/textures/cases/case-20.avif"
+  },
+  {
+    "id": 21,
+    "title": "Les Vilains",
+    "subtitle": "Blockchain",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/07/lesvilains-01-1024x1024.jpg.avif",
+    "link": "https://weichie.com/case/les-vilains/",
+    "localImg": "/textures/cases/case-21.avif"
+  },
+  {
+    "id": 22,
+    "title": "Teamleader MCP",
+    "subtitle": "Artificial intelligence",
+    "img": "https://weichie.com/wp-content/smush-avif/2026/07/teamleadermcp-landing-1024x641.jpg.avif",
+    "link": "https://weichie.com/case/teamleader-mcp/",
+    "localImg": "/textures/cases/case-22.avif"
+  },
+  {
+    "id": 23,
+    "title": "Maillard",
+    "subtitle": "Web development",
+    "img": "https://weichie.com/wp-content/uploads/2026/06/maillard-site-1.webp",
+    "link": "https://weichie.com/case/maillard-mechelen/",
+    "localImg": "/textures/cases/case-23.webp"
+  }
+]

@@ -46,7 +46,7 @@ export const AboutOffices: React.FC = () => {
               Brussels, Belgium
             </h3>
             <p className="text-muted text-sm sm:text-base leading-relaxed mb-6">
-              Our European creative powerhouse, housing our core engineering, Three.js shaders research, and design labs.
+              My European creative powerhouse, housing my core engineering, Three.js shaders research, and design labs.
             </p>
             <div className="text-xs text-gray-400 font-mono">
               Avenue Louise &bull; 1050 Brussels &bull; +32 2 899 00 24
@@ -63,7 +63,7 @@ export const AboutOffices: React.FC = () => {
               New York, USA
             </h3>
             <p className="text-muted text-sm sm:text-base leading-relaxed mb-6">
-              Serving our US enterprise partners, scaling direct-to-consumer platforms, and accelerating product strategy.
+              Serving my US enterprise partners, scaling direct-to-consumer platforms, and accelerating product strategy.
             </p>
             <div className="text-xs text-gray-400 font-mono">
               Broadway &bull; Manhattan, NY 10012 &bull; +1 (917) 472-8830

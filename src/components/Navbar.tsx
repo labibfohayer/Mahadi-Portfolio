@@ -1,93 +1,397 @@
-import React, { useState } from 'react';
-import { Sun, Menu, X } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X } from 'lucide-react';
+import { gsap } from 'gsap';
 
-export const Navbar: React.FC = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+interface NavJumpLinkProps {
+  href: string;
+  label: string;
+  className?: string;
+  isActive?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+}
+
+// Split into graphemes so combining marks/matras in Bengali or accents are preserved without dotted circles
+function splitGraphemes(text: string): string[] {
+  if (typeof Intl !== 'undefined' && 'Segmenter' in Intl) {
+    const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
+    return Array.from(segmenter.segment(text), (s) => s.segment);
+  }
+  return text.split('');
+}
+
+const NavJumpLink: React.FC<NavJumpLinkProps> = ({ 
+  href, 
+  label, 
+  className = "nav-main__link text-[15px] sm:text-[16px] font-semibold tracking-[-0.02em] text-[var(--clr-text,#12110b)] hover:opacity-70 transition-opacity inline-flex items-center",
+  isActive = false,
+  onClick
+}) => {
+  const charsRef = useRef<(HTMLSpanElement | null)[]>([]);
+
+  const handleMouseEnter = () => {
+    const validChars = charsRef.current.filter((c): c is HTMLSpanElement => c !== null);
+    if (validChars.length === 0) return;
+    
+    // Pick 1-2 random characters to playfully jump, matching Weichie main.js letterJump
+    const shuffled = [...validChars].sort(() => 0.5 - Math.random());
+    const count = Math.min(2, Math.max(1, Math.floor(validChars.length / 3)));
+    const targets = shuffled.slice(0, count);
+
+    targets.forEach((charEl) => {
+      const rot = (Math.random() - 0.5) * 28; // between -14 and +14 degrees
+      gsap.fromTo(
+        charEl,
+        { yPercent: 0, rotate: 0 },
+        {
+          yPercent: -42,
+          rotate: rot,
+          duration: 0.25,
+          ease: 'power2.out',
+          yoyo: true,
+          repeat: 1,
+          overwrite: true
+        }
+      );
+    });
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 sm:px-12 py-5 bg-[#fdf9f9]/90 backdrop-blur-md transition-all duration-300">
-      <div className="max-w-[1720px] mx-auto flex items-center justify-between">
-        {/* Brand Logo - 100% Exact Weichie Wordmark SVG */}
-        <a href="/" className="text-[#111111] hover:opacity-85 transition-opacity" aria-label="Weichie.com">
-          <svg className="h-[26px] w-auto" viewBox="0 0 133 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M39.893 0.863371V0.563103H33.7468L33.7086 0.863371L35.0066 2.70251L30.2729 17.9036C29.9675 18.8795 29.713 19.7427 29.5094 20.4934C29.3058 21.2441 29.1149 22.0698 28.9367 22.9706C28.7077 22.0698 28.4977 21.2441 28.3069 20.4934C28.116 19.7427 27.8678 18.8795 27.5624 17.9036L22.7142 2.77758L23.974 0.863371V0.563103H17.217V0.863371L18.6676 2.85265L18.7058 2.81511L14.0866 17.8661C13.8067 18.8169 13.5713 19.6802 13.3804 20.4559C13.1895 21.2316 12.9923 22.0573 12.7887 22.9331C12.5851 22.0573 12.3815 21.2378 12.1779 20.4746C11.9743 19.7115 11.7198 18.8544 11.4144 17.9036L6.52795 2.77758L7.78772 0.863371L7.74955 0.563103H0L0.0381751 0.863371L2.02328 2.85265L10.3836 27.6248H13.5903L18.5913 12.161C18.9221 11.1601 19.1894 10.2905 19.393 9.55238C19.5966 8.81422 19.8129 8.00725 20.0419 7.13147C20.2455 8.00725 20.4491 8.81422 20.6527 9.55238C20.8563 10.2905 21.0981 11.1601 21.3781 12.161L26.4554 27.6248H29.6621L38.0988 2.74005L39.893 0.863371Z" fill="currentColor"/>
-            <path d="M52.2427 23.0455C51.6955 23.6961 51.0465 24.1903 50.2957 24.5281C49.5449 24.8659 48.7115 25.0348 47.7953 25.0348C46.5737 25.0348 45.4729 24.7345 44.4931 24.134C43.5133 23.5335 42.7434 22.6577 42.1835 21.5067C41.6406 20.3932 41.3649 19.0649 41.3479 17.5281H55.5448C55.5957 16.5522 55.5321 15.5951 55.3539 14.6568C55.1758 13.7184 54.8767 12.8302 54.4568 11.9919C54.0369 11.1537 53.4706 10.4218 52.758 9.7962C52.0454 9.17064 51.1928 8.67645 50.2003 8.31362C49.2077 7.9508 48.037 7.76939 46.6882 7.76939C45.2121 7.76939 43.895 8.03212 42.737 8.55759C41.5791 9.08306 40.5992 9.80245 39.7976 10.7158C38.9959 11.6291 38.3851 12.705 37.9652 13.9436C37.5452 15.1823 37.3353 16.4897 37.3353 17.8659C37.3353 19.2421 37.558 20.5871 38.0033 21.8257C38.4487 23.0643 39.0977 24.1403 39.9503 25.0536C40.8028 25.9669 41.8272 26.6863 43.0234 27.2117C44.2195 27.7372 45.5429 27.9999 46.9936 27.9999C48.5715 27.9999 49.9521 27.7184 51.1356 27.1554C52.319 26.5924 53.2988 25.8105 54.0751 24.8096C54.8513 23.8087 55.3921 22.6327 55.6975 21.2814L53.5215 20.6809C53.2161 21.6067 52.7898 22.3949 52.2427 23.0455ZM42.718 12.0294C43.1506 11.3163 43.7042 10.7596 44.3786 10.3592C45.053 9.95884 45.8229 9.75866 46.6882 9.75866C47.4262 9.75866 48.0816 9.9088 48.6542 10.2091C49.2268 10.5093 49.7167 10.9347 50.1239 11.4852C50.5311 12.0357 50.8429 12.6613 51.0592 13.3619C51.2756 14.0625 51.4219 14.8257 51.4982 15.6514H41.4709C41.5303 15.249 41.6045 14.8528 41.7063 14.4691C41.9481 13.5558 42.2853 12.7426 42.718 12.0294Z" fill="currentColor"/>
-            <path d="M60.6221 5.29221C61.3347 5.29221 61.9519 5.0545 62.4736 4.57907C62.9953 4.10365 63.2562 3.51562 63.2562 2.815C63.2562 2.11437 63.0017 1.56388 62.4927 1.08846C61.9837 0.613031 61.3729 0.375318 60.6603 0.375318C59.9477 0.375318 59.3432 0.613031 58.847 1.08846C58.3507 1.56388 58.1025 2.13939 58.1025 2.815C58.1025 3.4906 58.3443 4.10365 58.8279 4.57907C59.3114 5.0545 59.9095 5.29221 60.6221 5.29221Z" fill="currentColor"/>
-            <path d="M62.6454 7.95717L57.4154 8.89551V9.19578L58.7515 11.11V25.5604L57.4154 27.3245V27.6247H63.9815V27.3245L62.6454 25.5604V7.95717Z" fill="currentColor"/>
-            <path d="M79.5188 23.8713C78.5262 24.6219 77.381 24.9973 76.083 24.9973C75.2941 24.9973 74.5179 24.8409 73.7543 24.5281C72.9908 24.2153 72.3037 23.7461 71.6929 23.1206C71.0821 22.495 70.6049 21.7068 70.2613 20.756C69.9177 19.8051 69.746 18.6916 69.746 17.4155C69.746 16.2895 69.8859 15.2636 70.1659 14.3378C70.4458 13.4119 70.8403 12.6175 71.3493 11.9544C71.8583 11.2913 72.4691 10.7846 73.1817 10.4343C73.8943 10.084 74.696 9.9088 75.5868 9.9088C76.2485 9.9088 76.8465 10.0214 77.381 10.2466C77.9154 10.4718 78.4054 10.7908 78.8507 11.2037C79.2961 11.6166 79.6651 12.1108 79.9578 12.6863C80.2505 13.2618 80.4986 13.8999 80.7022 14.6005L81.0076 14.6756L83.5272 12.4986C83.1963 11.5978 82.6555 10.7846 81.9047 10.0589C81.154 9.33328 80.2378 8.77028 79.1561 8.36992C78.0745 7.96956 76.8593 7.76939 75.5104 7.76939C74.1616 7.76939 72.8127 8.01335 71.6165 8.50129C70.4204 8.98923 69.3706 9.67734 68.4671 10.5656C67.5636 11.4539 66.8574 12.5174 66.3484 13.756C65.8394 14.9946 65.5849 16.3646 65.5849 17.8659C65.5849 19.8176 65.9984 21.5567 66.8256 23.0831C67.6527 24.6094 68.7916 25.8105 70.2422 26.6863C71.6929 27.5621 73.3726 27.9999 75.2813 27.9999C76.8338 27.9999 78.2017 27.7059 79.3852 27.1179C80.5686 26.5299 81.5484 25.6916 82.3247 24.6032C83.1009 23.5147 83.6163 22.2448 83.8708 20.7935L81.7711 20.3806C81.2621 21.9571 80.5113 23.1206 79.5188 23.8713Z" fill="currentColor"/>
-            <path d="M103.302 14.4504C103.302 13.0241 103.009 11.8105 102.424 10.8096C101.839 9.80875 101.043 9.05183 100.038 8.53887C99.0326 8.02591 97.8683 7.76943 96.5449 7.76943C95.6541 7.76943 94.8143 7.94459 94.0253 8.2949C93.2364 8.64521 92.5365 9.12064 91.9257 9.72117C91.3149 10.3217 90.8186 11.0223 90.4369 11.8231V-4.60065e-06L85.2069 0.938333V1.2386L86.543 3.15281V25.5603L85.2069 27.3244V27.6247H91.773V27.3244L90.4369 25.5603V15.5013C90.6659 14.5004 91.0159 13.6434 91.4867 12.9303C91.9575 12.2172 92.5365 11.6604 93.2237 11.26C93.9108 10.8597 94.6489 10.6595 95.4378 10.6595C96.2268 10.6595 96.9521 10.8222 97.5374 11.1474C98.1228 11.4727 98.5745 11.9482 98.8927 12.5737C99.2108 13.1993 99.3698 13.9875 99.3698 14.9383V25.5603L98.0337 27.3244V27.6247H104.676V27.3244L103.302 25.5603V14.4504Z" fill="currentColor"/>
-            <path d="M109.639 5.29221C110.352 5.29221 110.969 5.0545 111.49 4.57907C112.012 4.10365 112.273 3.51562 112.273 2.815C112.273 2.11437 112.019 1.56388 111.51 1.08846C111.001 0.613031 110.39 0.375318 109.677 0.375318C108.965 0.375318 108.36 0.613031 107.864 1.08846C107.368 1.56388 107.119 2.13939 107.119 2.815C107.119 3.4906 107.361 4.10365 107.845 4.57907C108.328 5.0545 108.926 5.29221 109.639 5.29221Z" fill="currentColor"/>
-            <path d="M111.662 7.95717L106.432 8.89551V9.19578L107.768 11.11V25.5604L106.432 27.3245V27.6247H112.998V27.3245L111.662 25.5604V7.95717Z" fill="currentColor"/>
-            <path d="M130.824 20.6809C130.519 21.6067 130.092 22.3949 129.545 23.0455C128.998 23.6961 128.349 24.1903 127.598 24.5281C126.847 24.8659 126.014 25.0348 125.098 25.0348C123.876 25.0348 122.775 24.7345 121.796 24.134C120.816 23.5335 120.046 22.6577 119.486 21.5067C118.943 20.3932 118.667 19.0649 118.65 17.5281H132.847C132.898 16.5522 132.835 15.5951 132.656 14.6568C132.478 13.7184 132.179 12.8302 131.759 11.9919C131.339 11.1537 130.773 10.4218 130.061 9.7962C129.348 9.17064 128.495 8.67645 127.503 8.31362C126.51 7.9508 125.34 7.76939 123.991 7.76939C122.515 7.76939 121.198 8.03212 120.04 8.55759C118.882 9.08306 117.902 9.80245 117.1 10.7158C116.298 11.6291 115.688 12.705 115.268 13.9436C114.848 15.1823 114.638 16.4897 114.638 17.8659C114.638 19.2421 114.86 20.5871 115.306 21.8257C115.751 23.0643 116.4 24.1403 117.253 25.0536C118.105 25.9669 119.13 26.6863 120.326 27.2117C121.522 27.7372 122.845 27.9999 124.296 27.9999C125.874 27.9999 127.255 27.7184 128.438 27.1554C129.622 26.5924 130.601 25.8105 131.378 24.8096C132.154 23.8087 132.695 22.6327 133 21.2814L130.824 20.6809ZM120.02 12.0294C120.453 11.3163 121.007 10.7596 121.681 10.3592C122.356 9.95884 123.125 9.75866 123.991 9.75866C124.729 9.75866 125.384 9.9088 125.957 10.2091C126.529 10.5093 127.019 10.9347 127.426 11.4852C127.834 12.0357 128.145 12.6613 128.362 13.3619C128.578 14.0625 128.724 14.8257 128.801 15.6514H118.773C118.833 15.249 118.907 14.8528 119.009 14.4691C119.251 13.5558 119.588 12.7426 120.02 12.0294Z" fill="currentColor"/>
-          </svg>
+    <a
+      href={href}
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      className={`${className} ${isActive ? '!text-[#ff4f31]' : ''}`}
+      aria-label={label}
+    >
+      {splitGraphemes(label).map((char, i) => (
+        <span
+          key={i}
+          ref={(el) => {
+            charsRef.current[i] = el;
+          }}
+          className="nav-main__char inline-block will-change-transform"
+          style={{ position: 'relative', display: 'inline-block' }}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      ))}
+    </a>
+  );
+};
+
+const ContactPill: React.FC<{ 
+  label: string; 
+  isActive?: boolean; 
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void; 
+}> = ({ label, isActive = false, onClick }) => {
+  const charsRef = useRef<(HTMLSpanElement | null)[]>([]);
+
+  const handleMouseEnter = () => {
+    const validChars = charsRef.current.filter((c): c is HTMLSpanElement => c !== null);
+    if (validChars.length === 0) return;
+    const shuffled = [...validChars].sort(() => 0.5 - Math.random());
+    const targets = shuffled.slice(0, 2);
+
+    targets.forEach((charEl) => {
+      const rot = (Math.random() - 0.5) * 28;
+      gsap.fromTo(
+        charEl,
+        { yPercent: 0, rotate: 0 },
+        {
+          yPercent: -38,
+          rotate: rot,
+          duration: 0.25,
+          ease: 'power2.out',
+          yoyo: true,
+          repeat: 1,
+          overwrite: true
+        }
+      );
+    });
+  };
+
+  return (
+    <a
+      href="#contact"
+      onClick={onClick}
+      onMouseEnter={handleMouseEnter}
+      className={`pill-contact inline-flex items-center gap-3 pl-5 pr-2 py-1.5 rounded-full bg-[var(--clr-beige,#f4efea)] hover:bg-[#eae3dc] dark:hover:bg-[#1f1d16] text-[var(--clr-text,#12110b)] transition-all duration-200 group h-[46px] cursor-pointer ${
+        isActive ? 'ring-2 ring-[#ff4f31]' : ''
+      }`}
+      aria-label={label}
+    >
+      <span className="pill-contact__label text-[15px] sm:text-[16px] font-semibold tracking-[-0.02em] leading-none inline-flex">
+        {splitGraphemes(label).map((char, i) => (
+          <span
+            key={i}
+            ref={(el) => {
+              charsRef.current[i] = el;
+            }}
+            className="inline-block will-change-transform"
+            style={{ position: 'relative', display: 'inline-block' }}
+          >
+            {char === ' ' ? '\u00A0' : char}
+          </span>
+        ))}
+      </span>
+      <span className="pill-contact__icon w-8 h-8 rounded-full bg-[#ff4f31] text-[#f4efea] flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.2]">
+        <svg 
+          width="14" 
+          height="20" 
+          viewBox="0 0 16.3384 23.6096" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg" 
+          className="transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[0.92] group-hover:-rotate-12"
+        >
+          <path d="M3.98877 11.1797L4.01535 10.3889C4.01535 9.031 3.94424 7.67379 3.80203 6.32313L3.72402 5.58309C3.63152 4.70463 4.2404 3.90624 5.11196 3.763L5.27764 3.73573C6.22721 3.57971 7.11119 4.25763 7.20715 5.21513L7.29171 6.05873C7.42046 7.34484 7.48501 8.63682 7.48501 9.92948L7.54058 10.499C7.53955 10.5253 7.57821 10.5277 7.58062 10.5018L7.61169 10.4697C7.79808 8.22365 7.82017 5.96692 7.67762 3.71744L7.60375 2.55283C7.53748 1.5073 8.31687 0.599849 9.36033 0.507688C10.448 0.411386 11.3989 1.23531 11.4583 2.32571L11.4849 2.81378C11.6336 5.53649 11.5418 8.26748 11.2101 10.974L11.5415 9.69891C11.8276 8.29682 11.9719 6.8692 11.9719 5.43812C11.9719 4.53998 12.6833 3.80304 13.5811 3.77163C14.4927 3.73953 15.261 4.44644 15.3049 5.35769L15.348 6.24996C15.4288 7.923 14.8551 10.8504 14.5431 12.4962L14.3798 13.3204" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M0.99855 15.9141C0.377242 16.4319 0.335821 17.4118 0.876704 18.0839L3.393 21.2121C3.9791 21.9411 5.06122 22.0185 5.74535 21.3806L5.79643 21.333C6.42119 20.7503 6.48194 19.7814 5.93519 19.1252L3.13896 16.1216C3.13896 16.1216 2.08653 15.008 0.998895 15.9145L0.99855 15.9141Z" stroke="currentColor" strokeWidth="1.6" strokeMiterlimit="10"/>
+          <path d="M12.1808 15.4665L8.94001 16.1803C8.04084 16.3785 7.16514 15.7648 7.04399 14.8521C6.93905 14.0603 7.44473 13.3158 8.21964 13.1214L10.5699 12.5319C14.0731 11.6531 17.0198 15.3133 15.3612 18.5216C15.2901 18.6594 15.2121 18.7954 15.1279 18.9289L14.3499 20.1609C13.4134 21.6434 11.9068 22.6744 10.1857 23.0099C8.92586 23.2557 7.61973 23.0437 6.50241 22.4124L5.25669 21.7089" stroke="currentColor" strokeWidth="1.6" strokeMiterlimit="10" strokeLinecap="round"/>
+          <path d="M11.0161 15.7229C11.0161 15.7229 8.92544 15.9583 7.40151 19.6596" stroke="currentColor" strokeWidth="1.6" strokeMiterlimit="10" strokeLinecap="round"/>
+          <path d="M7.07933 14.7494L4.18714 11.4403C3.49404 10.6471 2.26454 10.6343 1.55487 11.4126L1.46512 11.511C0.850374 12.1851 0.851064 13.2169 1.46685 13.8903L5.44219 18.2377C6.15117 19.0133 7.37687 19.0009 8.06998 18.2111C8.51318 17.7065 8.62052 17.012 8.39202 16.4156L8.25292 16.1015" stroke="currentColor" strokeWidth="1.6" strokeMiterlimit="10"/>
+        </svg>
+      </span>
+    </a>
+  );
+};
+
+const ThemeToggle: React.FC = () => {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && prefersDark)) {
+      setIsDark(true);
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    if (next) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={toggleTheme}
+      className="theme-toggle w-[44px] h-[44px] rounded-full bg-[var(--clr-beige,#f4efea)] hover:bg-[#eae3dc] dark:hover:bg-[#1f1d16] text-[var(--clr-text,#12110b)] flex items-center justify-center transition-colors duration-200 group relative select-none"
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      title={isDark ? "Switch to light theme" : "Switch to dark theme"}
+    >
+      <span 
+        className="w-5 h-5 grid overflow-hidden relative" 
+        style={{ gridTemplateColumns: '1fr', gridTemplateRows: '1fr' }}
+        aria-hidden="true"
+      >
+        {/* Sun Icon */}
+        <svg 
+          className={`w-5 h-5 col-start-1 row-start-1 transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] ${
+            isDark 
+              ? 'translate-y-[100%] group-hover:translate-y-0' 
+              : 'translate-y-0 group-hover:-translate-y-[100%]'
+          }`} 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round"
+        >
+          <circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </svg>
+
+        {/* Moon Icon */}
+        <svg 
+          className={`w-5 h-5 col-start-1 row-start-1 transition-transform duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] ${
+            isDark 
+              ? 'translate-y-0 group-hover:-translate-y-[100%]' 
+              : 'translate-y-[100%] group-hover:translate-y-0'
+          }`} 
+          viewBox="0 0 24 24" 
+          fill="none"
+        >
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" fill="currentColor"/>
+        </svg>
+      </span>
+    </button>
+  );
+};
+
+export type AppRoute = 'home' | 'work' | 'services' | 'about' | 'contact' | 'admin';
+
+export interface NavbarProps {
+  currentRoute?: AppRoute;
+  onNavigate?: (route: AppRoute) => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigate }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header 
+      className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300"
+      style={{
+        paddingTop: isScrolled ? '14px' : 'clamp(14px, 1.2vw + 10px, 24px)',
+        paddingBottom: isScrolled ? '14px' : 'clamp(14px, 1.2vw + 10px, 24px)',
+        paddingInline: 'clamp(1.25rem, 8.8vw, 5.625rem)',
+      }}
+    >
+      {/* Background blur overlay when scrolled */}
+      <div 
+        className={`absolute inset-0 -z-10 transition-opacity duration-300 pointer-events-none ${
+          isScrolled 
+            ? 'opacity-100 bg-[var(--clr-bg,#fdf9f9)]/80 backdrop-blur-md border-b border-black/[0.05] dark:border-white/[0.05] shadow-[0_2px_12px_rgba(0,0,0,0.03)]' 
+            : 'opacity-0'
+        }`} 
+      />
+      <div 
+        className="mx-auto flex items-center justify-between w-full"
+        style={{
+          maxWidth: 'calc(98rem + clamp(1.25rem, 8.8vw, 5.625rem) * 2)',
+        }}
+      >
+        {/* Brand Logo - Mahadi Hasan in Season Mix Serif */}
+        <a 
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault();
+            if (onNavigate) {
+              onNavigate('home');
+              window.location.hash = '';
+            } else {
+              window.location.href = '/';
+            }
+            window.scrollTo({ top: 0, behavior: 'instant' });
+          }}
+          className="pointer-events-auto inline-flex items-center text-[var(--clr-text,#12110b)] hover:opacity-85 transition-opacity cursor-pointer" 
+          aria-label="Mahadi Hasan"
+        >
+          <span 
+            className="text-[28px] sm:text-[32px] md:text-[36px] font-normal tracking-[-0.03em] leading-none"
+            style={{ fontFamily: "'Season Mix', Georgia, serif" }}
+          >
+            Mahadi Hasan
+          </span>
         </a>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-9">
-          <nav className="flex items-center gap-8">
-            <a href="#work" className="text-sm font-medium text-[#111111]/80 hover:text-[#111111] transition-colors">
-              Work
-            </a>
-            <a href="#services" className="text-sm font-medium text-[#111111]/80 hover:text-[#111111] transition-colors">
-              Services
-            </a>
-            <a href="#about" className="text-sm font-medium text-[#111111]/80 hover:text-[#111111] transition-colors">
-              About
-            </a>
-            <a href="#insights" className="text-sm font-medium text-[#111111]/80 hover:text-[#111111] transition-colors">
-              Insights
-            </a>
+        {/* Desktop Navigation Links with Weichie letterJump hover animation */}
+        <div className="hidden lg:flex items-center gap-[28px] pointer-events-auto">
+          <nav className="flex items-center gap-[24px]">
+            <NavJumpLink 
+              href="#home" 
+              label="Home" 
+              isActive={currentRoute === 'home'}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) {
+                  onNavigate('home');
+                  window.location.hash = '#home';
+                }
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
+            />
+            <NavJumpLink 
+              href="#work" 
+              label="Work" 
+              isActive={currentRoute === 'work'}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) {
+                  onNavigate('work');
+                  window.location.hash = '#work';
+                }
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
+            />
+            <NavJumpLink 
+              href="#services" 
+              label="Services" 
+              isActive={currentRoute === 'services'}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) {
+                  onNavigate('services');
+                  window.location.hash = '#services';
+                }
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
+            />
+            <NavJumpLink 
+              href="#about" 
+              label="About" 
+              isActive={currentRoute === 'about'}
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) {
+                  onNavigate('about');
+                  window.location.hash = '#about';
+                }
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
+            />
           </nav>
 
-          {/* Get In Touch Pill Button */}
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-3 pl-4 pr-1.5 py-1.5 rounded-full border border-black/15 bg-white text-[#111111] text-xs font-semibold hover:border-black/35 hover:shadow-sm transition-all group"
-          >
-            <span>Get in touch</span>
-            <span className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center transition-transform group-hover:scale-105">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0" />
-                <path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2" />
-                <path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8" />
-                <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" />
-              </svg>
-            </span>
-          </a>
+          {/* Get In Touch Pill with letterJump & badge scale/rotate */}
+          <ContactPill 
+            label="Get in touch" 
+            isActive={currentRoute === 'contact'}
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) {
+                onNavigate('contact');
+                window.location.hash = '#contact';
+              }
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
+          />
 
-          {/* Theme Toggle Sun */}
-          <button
-            type="button"
-            className="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-[#111111] hover:bg-black/5 transition-colors"
-            aria-label="Switch theme"
-          >
-            <Sun className="w-4 h-4" />
-          </button>
-
-          {/* Language Switcher */}
-          <button
-            type="button"
-            className="h-8 px-3 rounded-full border border-black/10 text-xs font-semibold text-[#111111] hover:bg-black/5 transition-colors"
-          >
-            EN
-          </button>
+          {/* Theme Toggle with Weichie Vertical Rolling Sun & Moon Icons */}
+          <ThemeToggle />
         </div>
 
         {/* Mobile Hamburger */}
-        <div className="lg:hidden flex items-center gap-3">
+        <div className="lg:hidden flex items-center gap-3 pointer-events-auto">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 pl-3 pr-1 py-1 rounded-full border border-black/15 bg-white text-xs font-semibold"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) onNavigate('contact');
+              window.location.hash = '#contact';
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
+            className={`inline-flex items-center gap-2 pl-4 pr-1.5 py-1.5 rounded-full bg-[var(--clr-beige,#f4efea)] dark:hover:bg-[#1f1d16] text-xs font-semibold text-[var(--clr-text,#12110b)] ${
+              currentRoute === 'contact' ? 'ring-2 ring-[#ff4f31]' : ''
+            }`}
           >
             <span>Contact</span>
-            <span className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center text-[10px]">
+            <span className="w-6 h-6 rounded-full bg-[#ff4f31] text-[#f4efea] flex items-center justify-center text-[10px]">
               &rarr;
             </span>
           </a>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 text-[#111111]"
+            className="p-2 text-[var(--clr-text,#111111)]"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -97,16 +401,76 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="fixed inset-0 top-[68px] bg-[#fdf9f9] z-40 p-8 flex flex-col justify-between border-t border-black/10 animate-in fade-in duration-200">
-          <div className="flex flex-col gap-6 text-2xl font-display font-medium text-[#111111]">
-            <a href="#work" onClick={() => setMobileOpen(false)}>Work</a>
-            <a href="#services" onClick={() => setMobileOpen(false)}>Services</a>
-            <a href="#about" onClick={() => setMobileOpen(false)}>About</a>
-            <a href="#insights" onClick={() => setMobileOpen(false)}>Insights</a>
-            <a href="#contact" onClick={() => setMobileOpen(false)} className="text-primary">Get in touch &rarr;</a>
+        <div className="fixed inset-0 top-[68px] bg-[var(--clr-bg,#fdf9f9)] z-40 p-8 flex flex-col justify-between border-t border-black/10 dark:border-white/10 animate-in fade-in duration-200">
+          <div className="flex flex-col gap-6 text-2xl font-display font-medium text-[var(--clr-text,#111111)]">
+            <a 
+              href="#home" 
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileOpen(false);
+                if (onNavigate) onNavigate('home');
+                window.location.hash = '#home';
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
+              className={currentRoute === 'home' ? '!text-[#ff4f31]' : ''}
+            >
+              Home
+            </a>
+            <a 
+              href="#work" 
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileOpen(false);
+                if (onNavigate) onNavigate('work');
+                window.location.hash = '#work';
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
+              className={currentRoute === 'work' ? '!text-[#ff4f31]' : ''}
+            >
+              Work
+            </a>
+            <a 
+              href="#services" 
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileOpen(false);
+                if (onNavigate) onNavigate('services');
+                window.location.hash = '#services';
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
+              className={currentRoute === 'services' ? '!text-[#ff4f31]' : ''}
+            >
+              Services
+            </a>
+            <a 
+              href="#about" 
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileOpen(false);
+                if (onNavigate) onNavigate('about');
+                window.location.hash = '#about';
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }}
+              className={currentRoute === 'about' ? '!text-[#ff4f31]' : ''}
+            >
+              About
+            </a>
+            <a 
+              href="#contact" 
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileOpen(false);
+                if (onNavigate) onNavigate('contact');
+                window.location.hash = '#contact';
+                window.scrollTo({ top: 0, behavior: 'instant' });
+              }} 
+              className={currentRoute === 'contact' ? '!text-[#ff4f31]' : 'text-primary'}
+            >
+              Get in touch &rarr;
+            </a>
           </div>
-          <div className="text-xs text-muted">
-            Brussels &bull; New York
+          <div className="flex items-center gap-4">
+            <ThemeToggle />
           </div>
         </div>
       )}

@@ -1,8 +1,9 @@
 {
-  "name": "weichie-rea",
+  "name": "mahadi-hasan-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "description": "Official 3D Portfolio & CMS for Mahadi Hasan - Video Editor & Motion Designer",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -92,7 +92,7 @@ export const WorkShowcase: React.FC = () => {
             </h2>
           </div>
           <p className="text-muted text-sm sm:text-base max-w-md">
-            From hyper-growth startups to storied international brands, here is a curated selection of our latest digital products.
+            From hyper-growth startups to storied international brands, here is a curated selection of my latest digital products.
           </p>
         </div>
 

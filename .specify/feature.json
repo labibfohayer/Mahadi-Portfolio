@@ -1,3 +1,6 @@
 {
-  "feature_directory": "specs/001-weichie-rea"
+  "current_feature": "033-admin-dashboard-cms",
+  "spec_path": "specs/033-admin-dashboard-cms/spec.md",
+  "checklist_path": "specs/033-admin-dashboard-cms/checklists/requirements.md",
+  "status": "completed"
 }

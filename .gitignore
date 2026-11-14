@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Production build outputs
+dist/
+
+# Logs & temp
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Root temporary REA scrapers and screenshot dumps
+*.png
+*.jpg
+*.jpeg
+!public/**
+!dist/**
+cases-main.html
+section_*.html
+extract_shaders.py
+inspect_sections.py
+process_videos.py
+shaders_found.txt
+all-extracted-cases.json
+extracted-cases.json
+REA/
+
+# Scratch test and scrape scripts
+scrape-*.cjs
+scrape-*.js
+take-*.cjs
+take-*.js
+test-*.cjs
+test-*.js
+verify-*.cjs
+verify-*.js

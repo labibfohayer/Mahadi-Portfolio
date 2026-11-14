@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ['selector', '[data-theme="dark"]'],
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -19,7 +20,9 @@ export default {
         light: '#f7f7f7'
       },
       fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
         sans: ['Fustat', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['"Season Mix"', 'Georgia', 'serif'],
         display: ['"Season Mix"', 'serif'],
         editorial: ['"Season Mix"', 'serif']
       },
