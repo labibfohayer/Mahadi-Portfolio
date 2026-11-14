@@ -36,11 +36,14 @@
         --clr-primary: #ff4f31;
         --border-radius-default: 16px;
       }
+      html, body, #root {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
       body {
         background-color: var(--clr-bg, #fdf9f9);
         color: var(--clr-text, #111111);
         font-family: 'Fustat', system-ui, -apple-system, sans-serif;
-        overflow-x: hidden;
         transition: background-color 0.3s ease, color 0.3s ease;
       }
     </style>

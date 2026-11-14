@@ -401,7 +401,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigat
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="fixed inset-0 top-[68px] bg-[var(--clr-bg,#fdf9f9)] z-40 p-8 flex flex-col justify-between border-t border-black/10 dark:border-white/10 animate-in fade-in duration-200">
+        <div className="fixed inset-0 top-[68px] max-h-[calc(100dvh-68px)] overflow-y-auto bg-[var(--clr-bg,#fdf9f9)] z-40 p-8 flex flex-col justify-between border-t border-black/10 dark:border-white/10 animate-in fade-in duration-200">
           <div className="flex flex-col gap-6 text-2xl font-display font-medium text-[var(--clr-text,#111111)]">
             <a 
               href="#home" 

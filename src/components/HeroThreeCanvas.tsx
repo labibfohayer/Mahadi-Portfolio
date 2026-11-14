@@ -202,10 +202,10 @@ export const HeroThreeCanvas: React.FC<HeroThreeCanvasProps> = ({ activeSlug, on
     const width = container.clientWidth || window.innerWidth;
     const height = container.clientHeight || 720;
 
-    // Weichie camera parameters: fov = 24, z = 8.6
+    // Weichie camera parameters: fov = 24, z = 8.6 (desktop) / 11.5 (mobile framing)
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(24, width / height, 0.1, 100);
-    camera.position.set(0, 0, 8.6);
+    camera.position.set(0, 0, width < 768 ? 11.5 : 8.6);
 
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
@@ -446,6 +446,7 @@ export const HeroThreeCanvas: React.FC<HeroThreeCanvasProps> = ({ activeSlug, on
       const w = container.clientWidth || window.innerWidth;
       const h = container.clientHeight || 720;
       camera.aspect = w / h;
+      camera.position.z = w < 768 ? 11.5 : 8.6;
       camera.updateProjectionMatrix();
       renderer.setSize(w, h);
     };

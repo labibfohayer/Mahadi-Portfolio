@@ -113,8 +113,8 @@ export function Footer() {
 
       tl.fromTo(
         logoSvg,
-        { scale: 1, x: '20%' },
-        { scale: 0.8, x: '0%', ease: 'none', duration: 1 },
+        { scale: 1, x: '0%' },
+        { scale: 0.85, x: '0%', ease: 'none', duration: 1 },
         0
       );
 
@@ -278,19 +278,12 @@ export function Footer() {
 
         {/* 5-Column Navigation Section */}
         <div 
-          className="footer__columns"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'minmax(0, 1.5fr) repeat(4, minmax(0, 1fr))',
-            gap: '29px',
-            height: '106px',
-            marginBottom: '49px',
-          }}
+          className="footer__columns grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-[minmax(0,1.5fr)_repeat(4,minmax(0,1fr))] gap-8 lg:gap-[29px] h-auto lg:h-[106px] mb-12 lg:mb-[49px]"
         >
           
           {/* Col 1: About */}
-          <div className="footer__col !gap-0 flex flex-col">
-            <p className="footer__description text-[11px] font-medium leading-[12px] text-[#555555] dark:text-[#a09e99] max-w-[155px] tracking-[-0.02em]">
+          <div className="footer__col col-span-2 sm:col-span-1 !gap-0 flex flex-col">
+            <p className="footer__description text-[11px] font-medium leading-[14px] text-[#555555] dark:text-[#a09e99] max-w-full sm:max-w-[155px] tracking-[-0.02em]">
               Mahadi Hasan is a creative video editor and graphic designer. I craft cinematic visual stories, high-retention edits, and bold branding that make your content stand out.
             </p>
           </div>
@@ -371,12 +364,12 @@ export function Footer() {
           </div>
 
           {/* Col 5: Business Inquiries */}
-          <div className="footer__col !gap-0 flex flex-col">
+          <div className="footer__col col-span-2 sm:col-span-1 !gap-0 flex flex-col">
             <h2 className="footer__col-title text-[11px] font-medium text-[#777777] dark:text-[#8e8e8e] tracking-[-0.02em] leading-none mb-[9px]">Business Inquiries</h2>
             <ul className="flex flex-col gap-0 text-[11px] font-medium leading-[18px] tracking-[-0.02em] text-[var(--clr-text,#12110b)]">
               <li><a href="tel:+8801314632404" className="hover:opacity-50 transition-opacity whitespace-nowrap">+880 1314-632404</a></li>
               <li><a href="https://wa.me/8801314632404" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity whitespace-nowrap">WhatsApp: 01314-632404</a></li>
-              <li><a href="mailto:mahadihasan20125@gmail.com" className="hover:opacity-50 transition-opacity whitespace-nowrap">mahadihasan20125@gmail.com</a></li>
+              <li><a href="mailto:mahadihasan20125@gmail.com" className="hover:opacity-50 transition-opacity break-all sm:break-normal whitespace-normal sm:whitespace-nowrap">mahadihasan20125@gmail.com</a></li>
               <li><a href="#contact" className="hover:opacity-50 transition-opacity underline font-medium whitespace-nowrap">Start a project</a></li>
             </ul>
           </div>
@@ -396,17 +389,17 @@ export function Footer() {
             <div className="footer__socials text-right">
               <ul className="socials__list flex flex-col justify-end gap-0 text-[11px] font-medium leading-[13.5px] tracking-[-0.02em] text-[var(--clr-text,#12110b)]" style={{ height: '41px' }}>
                 <li>
-                  <a href="https://wa.me/8801314632404" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">
+                  <a href="https://wa.me/8801314632404" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity whitespace-nowrap">
                     WhatsApp
                   </a>
                 </li>
                 <li>
-                  <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">
+                  <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity whitespace-nowrap">
                     Instagram
                   </a>
                 </li>
                 <li>
-                  <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">
+                  <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity whitespace-nowrap">
                     Facebook
                   </a>
                 </li>
@@ -415,13 +408,13 @@ export function Footer() {
           </div>
 
           {/* Giant Logo */}
-          <div className="footer__logo w-full select-none will-change-transform mt-[23px]">
+          <div className="footer__logo w-full select-none will-change-transform mt-[23px] overflow-hidden">
             <div
               ref={logoSvgRef}
               className="logo text-[var(--clr-text,#12110b)] font-normal tracking-[-0.03em] leading-none whitespace-nowrap select-none will-change-transform"
               style={{
                 fontFamily: "'Season Mix', Georgia, serif",
-                fontSize: 'clamp(3.2rem, 16.3vw, 17.8rem)',
+                fontSize: 'clamp(2.4rem, 13.5vw, 17.8rem)',
                 transformOrigin: '0px center',
                 color: 'var(--clr-text, #12110b)'
               }}

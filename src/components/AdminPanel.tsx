@@ -284,7 +284,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onNavigateHome }) => {
   /* ------------------------------------------------------------- */
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen w-full bg-[#12110b] text-[#f4efea] flex items-center justify-center p-4 selection:bg-[#ff4f31] selection:text-white">
+      <div className="min-h-screen w-full bg-[#12110b] text-[#f4efea] flex items-center justify-center p-4 selection:bg-[#ff4f31] selection:text-white overflow-hidden relative">
         <div className="w-full max-w-md bg-[#1a1916] border border-white/10 rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden">
           {/* Subtle Accent Glow */}
           <div className="absolute -top-24 -left-24 w-48 h-48 bg-[#ff4f31]/20 rounded-full blur-3xl pointer-events-none" />

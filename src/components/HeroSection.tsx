@@ -131,21 +131,24 @@ export const HeroSection: React.FC = () => {
         {/* Intro Heading revealed at the center of the hero stage */}
         <h1 
           ref={titleRef}
-          className="hero-homepage__title absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 text-center pointer-events-none whitespace-nowrap flex flex-col items-center select-none"
+          className="hero-homepage__title absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 text-center pointer-events-none flex flex-col items-center select-none w-full px-4"
           style={{
             fontFamily: "'Season Mix', Georgia, serif",
-            fontSize: 'clamp(2.5rem, 6.25vw + 1rem, 7.25rem)',
             lineHeight: 1.05,
             letterSpacing: '-0.02em',
-            gap: 'clamp(0.75rem, 1.25vw, 1.5rem)',
+            gap: 'clamp(0.5rem, 1.25vw, 1.5rem)',
             color: 'var(--clr-text, #12110b)'
           }}
         >
-          <span className="hero-homepage__title-line block will-change-transform">{siteSettings.hero.preTitle || 'The official portfolio'}</span>
-          <span className="hero-homepage__title-line block will-change-transform">
+          <span className="hero-homepage__title-line block will-change-transform text-[clamp(1.4rem,6vw,2.5rem)] md:text-[clamp(2.5rem,6.25vw+1rem,7.25rem)] whitespace-normal sm:whitespace-nowrap">
+            {siteSettings.hero.preTitle || 'The official portfolio'}
+          </span>
+          <span className="hero-homepage__title-line block will-change-transform text-[clamp(1.4rem,6vw,2.5rem)] md:text-[clamp(2.5rem,6.25vw+1rem,7.25rem)] whitespace-normal sm:whitespace-nowrap">
             of <span className="hero-mahadi-bevel-orange">{siteSettings.hero.name || 'Mahadi Hasan'}</span>,
           </span>
-          <span className="hero-homepage__title-line block will-change-transform">{siteSettings.hero.subtitle || 'crafting visual excellence'}</span>
+          <span className="hero-homepage__title-line block will-change-transform text-[clamp(1.4rem,6vw,2.5rem)] md:text-[clamp(2.5rem,6.25vw+1rem,7.25rem)] whitespace-normal sm:whitespace-nowrap">
+            {siteSettings.hero.subtitle || 'crafting visual excellence'}
+          </span>
         </h1>
 
         {/* 3D WebGL Cylindrical Hero Carousel Stage */}
@@ -171,7 +174,7 @@ export const HeroSection: React.FC = () => {
         <div className="max-w-6xl mx-auto px-4 mt-6">
           <ul 
             ref={labelsRef}
-            className="hero-homepage__labels flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-12 gap-y-4 opacity-0 transition-opacity"
+            className="hero-homepage__labels flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-8 md:gap-x-12 gap-y-3 sm:gap-y-4 opacity-0 transition-opacity"
           >
             {SERVICES.map((s) => {
               const isActive = s.slug === activeSlug;
@@ -180,7 +183,7 @@ export const HeroSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setActiveSlug(s.slug)}
-                    className={`hero-homepage__label-link inline-flex items-center gap-2.5 sm:gap-3 text-[16px] sm:text-[18px] md:text-[19px] font-semibold tracking-[-0.01em] transition-colors ${
+                    className={`hero-homepage__label-link inline-flex items-center gap-2 sm:gap-2.5 md:gap-3 text-[14px] sm:text-[17px] md:text-[19px] font-semibold tracking-[-0.01em] transition-colors ${
                       isActive
                         ? 'text-[#ff4f31]'
                         : 'text-[#666666] dark:text-[#999994] hover:text-[var(--clr-text,#111111)]'
