@@ -3,7 +3,7 @@ import { TextReveal } from './TextReveal';
 
 export function SimpleText() {
   return (
-    <section className="relative w-full pt-16 sm:pt-24 pb-20 sm:pb-28 px-4 sm:px-6 bg-[var(--clr-bg,#fdf9f9)] transition-colors duration-300 overflow-hidden">
+    <section className="relative w-full min-h-[60vh] sm:min-h-[75vh] flex flex-col justify-center items-center py-20 sm:py-32 px-4 sm:px-6 bg-[var(--clr-bg,#fdf9f9)] transition-colors duration-300 overflow-hidden">
       <div className="max-w-[720px] mx-auto text-center flex flex-col items-center">
         {/* Title matching exact Weichie Season Mix 2-line centered layout with word reveal */}
         <TextReveal

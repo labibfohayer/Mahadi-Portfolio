@@ -126,8 +126,8 @@ export const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="block-wrapper block-hero-homepage relative z-[2] w-full bg-[var(--clr-bg,#fdf9f9)] transition-colors duration-300">
-      <section className="hero-homepage relative pt-16 sm:pt-20 pb-12 sm:pb-16 overflow-hidden">
+    <div className="block-wrapper block-hero-homepage relative z-[2] w-full min-h-[100dvh] bg-[var(--clr-bg,#fdf9f9)] transition-colors duration-300">
+      <section className="hero-homepage relative min-h-[100dvh] flex flex-col justify-between pt-16 sm:pt-20 pb-8 sm:pb-12 overflow-hidden">
         {/* Intro Heading revealed at the center of the hero stage */}
         <h1 
           ref={titleRef}
@@ -154,9 +154,9 @@ export const HeroSection: React.FC = () => {
         {/* 3D WebGL Cylindrical Hero Carousel Stage */}
         <div 
           ref={stageRef} 
-          className="hero-homepage__stage w-full relative select-none"
+          className="hero-homepage__stage w-full relative select-none flex-1 flex items-center justify-center my-auto"
           style={{
-            height: 'min(clamp(26.25rem, 23.4375vw + 21.5625rem, 45rem), calc(100dvh - 3rem))'
+            height: 'min(clamp(26.25rem, 23.4375vw + 21.5625rem, 45rem), calc(100dvh - 9rem))'
           }}
         >
           <div 
