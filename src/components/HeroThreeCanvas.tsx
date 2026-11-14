@@ -223,10 +223,14 @@ export const HeroThreeCanvas: React.FC<HeroThreeCanvasProps> = ({ activeSlug, on
 
     // Apply exact tilt: -13 degrees
     const carouselRadius = 4.3;
+    const isMobile = width < 768;
+    const mobileScale = 0.72;
+    carousel.scale.setScalar(isMobile ? mobileScale : 1.0);
+
     const tiltDeg = -13;
     const tiltRad = THREE.MathUtils.degToRad(tiltDeg);
     carousel.rotation.x = tiltRad;
-    carousel.position.y = carouselRadius * Math.sin(tiltRad);
+    carousel.position.y = (carouselRadius * (isMobile ? mobileScale : 1.0)) * Math.sin(tiltRad);
 
     const textureLoader = new THREE.TextureLoader();
     textureLoader.crossOrigin = 'anonymous';
@@ -327,8 +331,11 @@ export const HeroThreeCanvas: React.FC<HeroThreeCanvasProps> = ({ activeSlug, on
       stateRef.current.planes.push(mesh);
     });
 
-    // Continuous 120 FPS Wheel Motion Dynamics - Gentle Hypnotic Slow Wheel Speed (~2.3 deg/s)
-    const BASE_SPEED = -0.04;
+    // Continuous 120 FPS Wheel Motion Dynamics:
+    // Responsive rotation on mobile and gentle hypnotic speed on desktop (~2.3 deg/s)
+    const BASE_SPEED = isMobile ? -0.075 : -0.04;
+    stateRef.current.dragInfluence = isMobile ? 0.0065 : 0.0035;
+    stateRef.current.spinVelocity = BASE_SPEED;
 
     const onPointerDown = (e: PointerEvent) => {
       stateRef.current.isDragging = true;
@@ -357,7 +364,9 @@ export const HeroThreeCanvas: React.FC<HeroThreeCanvasProps> = ({ activeSlug, on
     const onPointerUp = () => {
       if (!stateRef.current.isDragging) return;
       stateRef.current.isDragging = false;
-      stateRef.current.spinVelocity = THREE.MathUtils.clamp(stateRef.current.spinVelocity, -2.5, 2.5);
+      const isMob = (container.clientWidth || window.innerWidth) < 768;
+      const maxV = isMob ? 4.0 : 2.5;
+      stateRef.current.spinVelocity = THREE.MathUtils.clamp(stateRef.current.spinVelocity, -maxV, maxV);
     };
 
     const dom = renderer.domElement;
@@ -377,21 +386,24 @@ export const HeroThreeCanvas: React.FC<HeroThreeCanvasProps> = ({ activeSlug, on
       const dt = Math.min((now - lastTime) / 1000, 0.05);
       lastTime = now;
 
+      const isMob = (container.clientWidth || window.innerWidth) < 768;
+      const baseSpeed = isMob ? -0.075 : -0.04;
+
       const state = stateRef.current;
       if (!state.isDragging) {
         if (state.isAnimatingScroll) {
           // Smooth spring to requested service, then seamlessly continue wheel rotation
           const diff = state.targetRotation - state.rotation;
-          if (Math.abs(diff) < 0.003) {
+          if (Math.abs(diff) < 0.004) {
             state.rotation = state.targetRotation;
             state.isAnimatingScroll = false;
-            state.spinVelocity = BASE_SPEED;
+            state.spinVelocity = baseSpeed;
           } else {
-            state.rotation += diff * Math.min(dt * 7.0, 1.0);
+            state.rotation += diff * Math.min(dt * (isMob ? 13.0 : 7.0), 1.0);
           }
         } else {
           // Continuous unbroken rotation like a slow wheel
-          state.spinVelocity += (BASE_SPEED - state.spinVelocity) * Math.min(dt * 2.0, 1.0);
+          state.spinVelocity += (baseSpeed - state.spinVelocity) * Math.min(dt * 2.0, 1.0);
           state.rotation += state.spinVelocity * dt;
         }
       }
@@ -445,9 +457,13 @@ export const HeroThreeCanvas: React.FC<HeroThreeCanvasProps> = ({ activeSlug, on
       if (!container) return;
       const w = container.clientWidth || window.innerWidth;
       const h = container.clientHeight || 720;
+      const isMob = w < 768;
       camera.aspect = w / h;
-      camera.position.z = w < 768 ? 11.5 : 8.6;
+      camera.position.z = isMob ? 11.5 : 8.6;
       camera.updateProjectionMatrix();
+      carousel.scale.setScalar(isMob ? mobileScale : 1.0);
+      carousel.position.y = (carouselRadius * (isMob ? mobileScale : 1.0)) * Math.sin(tiltRad);
+      stateRef.current.dragInfluence = isMob ? 0.0065 : 0.0035;
       renderer.setSize(w, h);
     };
 
@@ -502,7 +518,7 @@ export const HeroThreeCanvas: React.FC<HeroThreeCanvasProps> = ({ activeSlug, on
   return (
     <div
       ref={mountRef}
-      className="w-full h-full min-h-[500px] relative cursor-grab active:cursor-grabbing select-none"
+      className="w-full h-full min-h-[360px] sm:min-h-[500px] relative cursor-grab active:cursor-grabbing select-none"
     />
   );
 };
