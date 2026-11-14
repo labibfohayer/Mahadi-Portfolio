@@ -185,7 +185,7 @@ export function App() {
             <PartnersCall onNavigateContact={() => handleNavigate('contact')} />
 
             {/* [6] Meet the team with centerpiece & member profiles */}
-            <MeetTheTeam />
+            <MeetTheTeam onNavigateAbout={() => handleNavigate('about')} />
 
             {/* [7] Interactive Technology Picker */}
             <TechnologyPicker 

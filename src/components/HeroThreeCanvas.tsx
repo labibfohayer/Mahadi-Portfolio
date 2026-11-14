@@ -475,6 +475,14 @@ export const HeroThreeCanvas: React.FC<HeroThreeCanvasProps> = ({ activeSlug, on
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerup', onPointerUp);
       window.removeEventListener('resize', onResize);
+
+      // Cleanly dispose Three.js geometries and shader materials to prevent WebGL leaks
+      stateRef.current.planes.forEach((mesh) => {
+        if (mesh.geometry) mesh.geometry.dispose();
+        if (mesh.userData?.material) mesh.userData.material.dispose();
+        if (mesh.userData?.shadowMaterial) mesh.userData.shadowMaterial.dispose();
+      });
+
       renderer.dispose();
       if (dom.parentNode) dom.parentNode.removeChild(dom);
     };

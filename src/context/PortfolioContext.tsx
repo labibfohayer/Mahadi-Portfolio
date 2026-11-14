@@ -249,6 +249,7 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   // Reset to Factory Defaults
   const resetToDefaults = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY_PROJECTS);
+    localStorage.removeItem('mahadi_portfolio_projects_v1');
     localStorage.removeItem(STORAGE_KEY_SETTINGS);
     setProjects(initialProjectsData as ProjectItem[]);
     setSiteSettings(DEFAULT_SITE_SETTINGS);

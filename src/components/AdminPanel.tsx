@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Plus, 
   Trash2, 
@@ -82,6 +82,11 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onNavigateHome }) => {
 
   // Site Content Draft State
   const [contentDraft, setContentDraft] = useState<SiteSettings>(siteSettings);
+
+  // Sync contentDraft whenever siteSettings updates from context/reset
+  useEffect(() => {
+    setContentDraft(siteSettings);
+  }, [siteSettings]);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -270,13 +275,15 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onNavigateHome }) => {
     return matchesCategory && matchesSearch;
   });
 
-  // Category counts
+  // Category filter options
   const categoryOptions = [
     { id: 'all', label: 'All Projects' },
     { id: 'video-editing', label: 'Video Editing' },
     { id: 'motion-graphics', label: 'Motion Graphics' },
     { id: 'graphic-design', label: 'Graphic Design' },
-    { id: 'commercials-3d', label: 'Commercials & 3D' }
+    { id: 'commercials-3d', label: 'Commercials & 3D' },
+    { id: 'brand-identity', label: 'Brand Identity' },
+    { id: 'color-sound', label: 'Color & Sound' }
   ];
 
   /* ------------------------------------------------------------- */

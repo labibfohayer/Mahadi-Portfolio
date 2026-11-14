@@ -433,6 +433,14 @@ export const WorkPage: React.FC<WorkPageProps> = ({ onNavigateHome, initialProje
   });
 
   const totalPages = Math.max(1, Math.ceil(filteredProjects.length / ITEMS_PER_PAGE));
+
+  // Guard against out-of-bounds page when category or project count changes
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(1);
+    }
+  }, [totalPages, currentPage]);
+
   const displayedProjects = filteredProjects.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE

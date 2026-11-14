@@ -247,6 +247,17 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigat
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock background body scroll when mobile navigation drawer is active
+  useEffect(() => {
+    if (mobileOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [mobileOpen]);
+
   return (
     <header 
       className="fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300"

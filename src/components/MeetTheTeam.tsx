@@ -43,7 +43,11 @@ function computeClipPath(topFactor: number, bottomFactor: number = topFactor): s
   return `M${r[0]} C${r[1]} ${r[2]} ${r[3]} C${r[4]} ${r[5]} ${r[6]} C${r[7]} ${r[8]} ${r[9]} L${i[0]} C${i[1]} ${i[2]} ${i[3]} C${i[4]} ${i[5]} ${i[6]} C${i[7]} ${i[8]} ${i[9]} Z`;
 }
 
-export function MeetTheTeam() {
+export interface MeetTheTeamProps {
+  onNavigateAbout?: () => void;
+}
+
+export function MeetTheTeam({ onNavigateAbout }: MeetTheTeamProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
   const clipPathRef = useRef<SVGPathElement>(null);
   const centerpieceRef = useRef<HTMLDivElement>(null);
@@ -202,7 +206,16 @@ export function MeetTheTeam() {
 
           {/* 3. Right CTA Button (grid-area: cta) */}
           <a
-            href="#contact"
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigateAbout) {
+                onNavigateAbout();
+              } else {
+                window.location.hash = '#about';
+              }
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
             className="btn meet-the-team__cta"
             data-style="primary"
             data-size="large"
