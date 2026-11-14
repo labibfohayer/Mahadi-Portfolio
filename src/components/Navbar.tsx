@@ -275,6 +275,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigat
           href="#home"
           onClick={(e) => {
             e.preventDefault();
+            setMobileOpen(false);
             if (onNavigate) {
               onNavigate('home');
               window.location.hash = '';
@@ -375,6 +376,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigat
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
+              setMobileOpen(false);
               if (onNavigate) onNavigate('contact');
               window.location.hash = '#contact';
               window.scrollTo({ top: 0, behavior: 'instant' });
@@ -401,7 +403,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigat
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="fixed inset-0 top-[68px] max-h-[calc(100dvh-68px)] overflow-y-auto bg-[var(--clr-bg,#fdf9f9)] z-40 p-8 flex flex-col justify-between border-t border-black/10 dark:border-white/10 animate-in fade-in duration-200">
+        <div className="fixed inset-0 top-[68px] max-h-[calc(100dvh-68px)] overflow-y-auto bg-[var(--clr-bg,#fdf9f9)] z-40 p-8 flex flex-col justify-between border-t border-black/10 dark:border-white/10 animate-in fade-in duration-200 pointer-events-auto">
           <div className="flex flex-col gap-6 text-2xl font-display font-medium text-[var(--clr-text,#111111)]">
             <a 
               href="#home" 
@@ -412,7 +414,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigat
                 window.location.hash = '#home';
                 window.scrollTo({ top: 0, behavior: 'instant' });
               }}
-              className={currentRoute === 'home' ? '!text-[#ff4f31]' : ''}
+              className={`cursor-pointer select-none touch-manipulation py-1 transition-colors ${currentRoute === 'home' ? '!text-[#ff4f31]' : 'hover:text-[#ff4f31]'}`}
             >
               Home
             </a>
@@ -425,7 +427,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigat
                 window.location.hash = '#work';
                 window.scrollTo({ top: 0, behavior: 'instant' });
               }}
-              className={currentRoute === 'work' ? '!text-[#ff4f31]' : ''}
+              className={`cursor-pointer select-none touch-manipulation py-1 transition-colors ${currentRoute === 'work' ? '!text-[#ff4f31]' : 'hover:text-[#ff4f31]'}`}
             >
               Work
             </a>
@@ -438,7 +440,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigat
                 window.location.hash = '#services';
                 window.scrollTo({ top: 0, behavior: 'instant' });
               }}
-              className={currentRoute === 'services' ? '!text-[#ff4f31]' : ''}
+              className={`cursor-pointer select-none touch-manipulation py-1 transition-colors ${currentRoute === 'services' ? '!text-[#ff4f31]' : 'hover:text-[#ff4f31]'}`}
             >
               Services
             </a>
@@ -451,7 +453,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigat
                 window.location.hash = '#about';
                 window.scrollTo({ top: 0, behavior: 'instant' });
               }}
-              className={currentRoute === 'about' ? '!text-[#ff4f31]' : ''}
+              className={`cursor-pointer select-none touch-manipulation py-1 transition-colors ${currentRoute === 'about' ? '!text-[#ff4f31]' : 'hover:text-[#ff4f31]'}`}
             >
               About
             </a>
@@ -464,7 +466,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute = 'home', onNavigat
                 window.location.hash = '#contact';
                 window.scrollTo({ top: 0, behavior: 'instant' });
               }} 
-              className={currentRoute === 'contact' ? '!text-[#ff4f31]' : 'text-primary'}
+              className={`cursor-pointer select-none touch-manipulation py-1 transition-colors ${currentRoute === 'contact' ? '!text-[#ff4f31]' : 'text-[#ff4f31] font-semibold'}`}
             >
               Get in touch &rarr;
             </a>
