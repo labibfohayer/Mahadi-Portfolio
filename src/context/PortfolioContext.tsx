@@ -39,6 +39,7 @@ export interface SiteSettings {
     socials: {
       linkedin: string;
       instagram: string;
+      facebook: string;
       youtube: string;
       twitter: string;
       behance: string;
@@ -73,7 +74,8 @@ export const DEFAULT_SITE_SETTINGS: SiteSettings = {
     location: 'Dhaka, Bangladesh • Available Worldwide',
     socials: {
       linkedin: 'https://linkedin.com',
-      instagram: 'https://instagram.com',
+      instagram: 'https://www.instagram.com/mahadihasan9451/',
+      facebook: 'https://www.facebook.com/mahadi.hasan.385339',
       youtube: 'https://youtube.com',
       twitter: 'https://x.com',
       behance: 'https://behance.net'
@@ -136,7 +138,16 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           contact: { 
             ...DEFAULT_SITE_SETTINGS.contact, 
             ...(parsed.contact || {}),
-            socials: { ...DEFAULT_SITE_SETTINGS.contact.socials, ...(parsed.contact?.socials || {}) }
+            socials: { 
+              ...DEFAULT_SITE_SETTINGS.contact.socials, 
+              ...(parsed.contact?.socials || {}),
+              instagram: (parsed.contact?.socials?.instagram && parsed.contact.socials.instagram !== 'https://instagram.com')
+                ? parsed.contact.socials.instagram
+                : 'https://www.instagram.com/mahadihasan9451/',
+              facebook: (parsed.contact?.socials?.facebook && parsed.contact.socials.facebook !== 'https://facebook.com')
+                ? parsed.contact.socials.facebook
+                : 'https://www.facebook.com/mahadi.hasan.385339',
+            }
           },
           typography: { ...DEFAULT_SITE_SETTINGS.typography, ...(parsed.typography || {}) },
           admin: { ...DEFAULT_SITE_SETTINGS.admin, ...(parsed.admin || {}) }

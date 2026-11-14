@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { usePortfolio } from '../context/PortfolioContext';
 import {
   PhoneIcon,
   ContactHandIcon,
@@ -15,10 +16,14 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 
 export function Footer() {
+  const { siteSettings } = usePortfolio();
   const footerRef = useRef<HTMLElement>(null);
   const handRef = useRef<HTMLSpanElement>(null);
   const logoSvgRef = useRef<HTMLDivElement>(null);
   const copyrightRef = useRef<HTMLParagraphElement>(null);
+
+  const instagramUrl = siteSettings?.contact?.socials?.instagram || 'https://www.instagram.com/mahadihasan9451/';
+  const facebookUrl = siteSettings?.contact?.socials?.facebook || 'https://www.facebook.com/mahadi.hasan.385339';
 
   useEffect(() => {
     const footer = footerRef.current;
@@ -391,17 +396,17 @@ export function Footer() {
             <div className="footer__socials text-right">
               <ul className="socials__list flex flex-col justify-end gap-0 text-[11px] font-medium leading-[13.5px] tracking-[-0.02em] text-[var(--clr-text,#12110b)]" style={{ height: '41px' }}>
                 <li>
-                  <a href="https://www.linkedin.com/company/weichie/" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">
-                    LinkedIn
+                  <a href="https://wa.me/8801314632404" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">
+                    WhatsApp
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/weichiecom/" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">
+                  <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">
                     Instagram
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.facebook.com/weichiecom/" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">
+                  <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity">
                     Facebook
                   </a>
                 </li>

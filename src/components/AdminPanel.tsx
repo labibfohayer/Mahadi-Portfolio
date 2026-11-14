@@ -802,6 +802,24 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({ onNavigateHome }) => {
                         socials: { ...contentDraft.contact.socials, instagram: e.target.value }
                       }
                     })}
+                    placeholder="https://www.instagram.com/mahadihasan9451/"
+                    className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-sm focus:outline-none focus:border-[#ff4f31]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-medium text-[#a09e99] mb-1.5">Facebook Profile URL</label>
+                  <input
+                    type="text"
+                    value={contentDraft.contact.socials.facebook || ''}
+                    onChange={(e) => setContentDraft({
+                      ...contentDraft,
+                      contact: {
+                        ...contentDraft.contact,
+                        socials: { ...contentDraft.contact.socials, facebook: e.target.value }
+                      }
+                    })}
+                    placeholder="https://www.facebook.com/mahadi.hasan.385339"
                     className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-sm focus:outline-none focus:border-[#ff4f31]"
                   />
                 </div>

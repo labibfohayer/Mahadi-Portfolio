@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Check, CheckCircle2, Phone, Mail } from 'lucide-react';
 import { TextReveal } from './TextReveal';
+import { usePortfolio } from '../context/PortfolioContext';
 
 interface ContactPageProps {
   initialSelectedServices?: string[];
@@ -31,6 +32,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({
   initialSelectedServices = [],
   onNavigateHome 
 }) => {
+  const { siteSettings } = usePortfolio();
+  const instagramUrl = siteSettings?.contact?.socials?.instagram || 'https://www.instagram.com/mahadihasan9451/';
+  const facebookUrl = siteSettings?.contact?.socials?.facebook || 'https://www.facebook.com/mahadi.hasan.385339';
+
   // Form State
   const [name, setName] = useState('');
   const [company, setCompany] = useState('');
@@ -232,6 +237,25 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                   >
                     WhatsApp: 01314-632404
                   </a>
+                  <div className="flex items-center gap-3 pt-0.5 text-xs text-[var(--clr-text,#12110b)]/80">
+                    <a 
+                      href={instagramUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-[#ff4f31] transition-colors font-medium inline-flex items-center gap-1"
+                    >
+                      Instagram ↗
+                    </a>
+                    <span className="opacity-30">•</span>
+                    <a 
+                      href={facebookUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="hover:text-[#ff4f31] transition-colors font-medium inline-flex items-center gap-1"
+                    >
+                      Facebook ↗
+                    </a>
+                  </div>
                   <a 
                     href="mailto:mahadihasan20125@gmail.com?subject=Project%20Inquiry%20-%20Mahadi%20Hasan&body=Hello%20Mahadi,%20I%20would%20like%20to%20discuss%20a%20project."
                     className="text-[11px] uppercase tracking-wider text-[#ff4f31] font-semibold hover:underline mt-1"
