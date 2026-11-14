@@ -123,6 +123,45 @@ const ProjectMediaCard: React.FC<ProjectMediaCardProps> = ({ project, onHoverSta
   const videoRef = useRef<HTMLVideoElement>(null);
   const sweepTimerRef = useRef<number | null>(null);
 
+  // On mobile devices, automatically play preview videos when scrolled into view
+  useEffect(() => {
+    if (project.type !== 'video' || !videoRef.current) return;
+    const video = videoRef.current;
+
+    const isMobileDevice = window.innerWidth < 768 || window.matchMedia('(max-width: 767px)').matches;
+    if (!isMobileDevice) return;
+
+    video.muted = true;
+    video.playsInline = true;
+    video.loop = true;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.then(() => setIsPlaying(true)).catch(() => {});
+            }
+          } else {
+            video.pause();
+            setIsPlaying(false);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(video);
+
+    // Initial attempt to start playing immediately on mount if in viewport
+    video.play().then(() => setIsPlaying(true)).catch(() => {});
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [project.type, project.media]);
+
   const handleMouseEnter = () => {
     setSweepActive(true);
     onHoverStart();
@@ -175,8 +214,8 @@ const ProjectMediaCard: React.FC<ProjectMediaCardProps> = ({ project, onHoverSta
             loop
             muted={isMuted}
             playsInline
-            preload="metadata"
-            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/media:scale-105"
+            preload="auto"
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/media:scale-105 pointer-events-none"
           />
 
           {/* Top Badges */}
@@ -192,8 +231,11 @@ const ProjectMediaCard: React.FC<ProjectMediaCardProps> = ({ project, onHoverSta
 
           {/* Bottom Volume Button & Indicator */}
           <div className="absolute bottom-3 inset-x-3 z-30 flex items-center justify-between gap-2 pointer-events-auto">
-            <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-sans font-medium text-white/90 tracking-[-0.01em] truncate max-w-[70%] border border-white/10">
-              {isPlaying ? 'Playing Preview' : 'Hover to Play'}
+            <span className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-[11px] font-sans font-medium text-white/90 tracking-[-0.01em] truncate max-w-[70%] border border-white/10 flex items-center gap-1.5">
+              {isPlaying && (
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
+              )}
+              {isPlaying ? 'Playing Preview' : (typeof window !== 'undefined' && window.innerWidth < 768 ? 'Tap to View' : 'Hover to Play')}
             </span>
 
             <button
@@ -265,15 +307,15 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-10 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
       onClick={onClose}
     >
       <div 
-        className="relative max-w-4xl w-full bg-[var(--clr-bg,#fdf9f9)] dark:bg-[#1a1914] text-[var(--clr-text,#12110b)] rounded-[24px] overflow-hidden shadow-2xl border border-black/10 dark:border-white/10 flex flex-col md:flex-row max-h-[90vh]"
+        className="relative max-w-4xl w-full bg-[var(--clr-bg,#fdf9f9)] dark:bg-[#1a1914] text-[var(--clr-text,#12110b)] rounded-[20px] sm:rounded-[24px] overflow-hidden shadow-2xl border border-black/10 dark:border-white/10 flex flex-col md:flex-row max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Media Preview Column */}
-        <div className="w-full md:w-[60%] aspect-square md:aspect-auto bg-black flex items-center justify-center overflow-hidden">
+        <div className="w-full md:w-[60%] aspect-video sm:aspect-square md:aspect-auto bg-black flex items-center justify-center overflow-hidden min-h-[220px] max-h-[50vh] md:max-h-[75vh]">
           {project.type === 'video' ? (
             <video
               src={project.media}
@@ -281,13 +323,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
               controls
               autoPlay
               playsInline
-              className="w-full h-full object-contain max-h-[70vh]"
+              className="w-full h-full object-contain max-h-[50vh] md:max-h-[75vh]"
             />
           ) : (
             <img
               src={project.media}
               alt={project.title}
-              className="w-full h-full object-contain max-h-[70vh]"
+              className="w-full h-full object-contain max-h-[50vh] md:max-h-[75vh]"
             />
           )}
         </div>
@@ -624,10 +666,12 @@ export const WorkPage: React.FC<WorkPageProps> = ({ onNavigateHome, initialProje
                       <video
                         src={item.media}
                         poster={item.poster}
+                        autoPlay
                         muted
                         loop
                         playsInline
-                        className="w-full h-full object-cover"
+                        preload="metadata"
+                        className="w-full h-full object-cover pointer-events-none"
                       />
                     ) : (
                       <img
