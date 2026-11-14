@@ -149,9 +149,8 @@ export function MeetTheTeam() {
     <div className="block-wrapper block-meet-the-team w-full bg-[var(--clr-bg,#fdf9f9)] text-[var(--clr-text,#12110b)] transition-colors duration-300 overflow-hidden relative">
       <section
         ref={sectionRef}
-        className="meet-the-team relative overflow-visible"
+        className="meet-the-team relative overflow-visible pb-14 lg:pb-[clamp(14rem,20vw,24rem)]"
         data-reveal=""
-        style={{ paddingBottom: 'clamp(14rem, 20vw, 24rem)' }}
       >
         {/* SVG clip-path definition for the iconic squircle arch centerpiece */}
         <svg

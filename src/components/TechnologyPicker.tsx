@@ -88,7 +88,7 @@ export function TechnologyPicker({ onNavigateContact }: TechnologyPickerProps = 
         <TextReveal
           text="Tell me what you need."
           as="h2"
-          className="technology__heading font-serif text-[clamp(2.75rem,9.375vw+0.625rem,9.5rem)] font-normal leading-none tracking-[-0.02em] text-[var(--clr-text,#12110b)] text-center m-0"
+          className="technology__heading font-serif text-[clamp(2rem,7vw+0.5rem,9.5rem)] md:text-[clamp(2.75rem,9.375vw+0.625rem,9.5rem)] font-normal leading-none tracking-[-0.02em] text-[var(--clr-text,#12110b)] text-center m-0"
         />
 
         {/* Interactive Selection Bar (width: 756px max) */}

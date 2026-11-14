@@ -377,7 +377,7 @@ export function Footer() {
 
         {/* Bottom Section */}
         <div className="footer__bottom relative">
-          <div className="footer__bottom-head flex items-start justify-between mb-0" style={{ height: '41px' }}>
+          <div className="footer__bottom-head flex items-start justify-between mb-0 h-auto md:h-[41px]">
             <span
               ref={handRef}
               className="footer__hand text-[var(--clr-text,#12110b)] shrink-0 inline-flex will-change-transform"
@@ -387,7 +387,7 @@ export function Footer() {
               <BottomPeaceHandIcon className="w-full h-auto text-current block" />
             </span>
             <div className="footer__socials text-right">
-              <ul className="socials__list flex flex-col justify-end gap-0 text-[11px] font-medium leading-[13.5px] tracking-[-0.02em] text-[var(--clr-text,#12110b)]" style={{ height: '41px' }}>
+              <ul className="socials__list flex flex-col justify-end gap-0 text-[11px] font-medium leading-[13.5px] tracking-[-0.02em] text-[var(--clr-text,#12110b)] h-auto md:h-[41px]">
                 <li>
                   <a href="https://wa.me/8801314632404" target="_blank" rel="noopener noreferrer" className="hover:opacity-50 transition-opacity whitespace-nowrap">
                     WhatsApp

@@ -479,7 +479,7 @@ export const WorkPage: React.FC<WorkPageProps> = ({ onNavigateHome, initialProje
           <TextReveal
             lines={["Selected Work"]}
             as="h1"
-            className="text-[clamp(3.5rem,8.5vw,7.5rem)] font-normal leading-[1.0] tracking-[-0.02em] text-[var(--clr-text,#12110b)] mb-8"
+            className="text-[clamp(2.5rem,7vw+0.5rem,7.5rem)] md:text-[clamp(3.5rem,8.5vw,7.5rem)] font-normal leading-[1.0] tracking-[-0.02em] text-[var(--clr-text,#12110b)] mb-8"
             style={{ fontFamily: "'Season Mix', Georgia, serif" }}
           />
 

@@ -144,3 +144,53 @@
     0 26px 52px rgba(255, 79, 49, 0.18),
     0 52px 104px rgba(0, 0, 0, 0.16);
 }
+
+/* ========================================================================== */
+/* MEET THE CREATOR (Clean Mobile Layout with Zero Face Obstruction)          */
+/* Keeps desktop 100% intact with Weichie 3-row grid                         */
+/* ========================================================================== */
+@media (max-width: 979px) {
+  .meet-the-team {
+    padding-bottom: 3.5rem !important;
+  }
+  .meet-the-team__inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 1.75rem !important;
+  }
+  .meet-the-team__callout {
+    order: 1 !important;
+    margin: 0 auto !important;
+    align-self: center !important;
+  }
+  .meet-the-team__heading {
+    order: 2 !important;
+    margin-bottom: 0 !important;
+    font-size: clamp(2.2rem, 8vw, 3.5rem) !important;
+    line-height: 1.05 !important;
+  }
+  .meet-the-team__centerpiece-wrapper {
+    order: 3 !important;
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    translate: none !important;
+    z-index: 1 !important;
+    margin: 0.5rem auto !important;
+    width: min(85vw, 290px) !important;
+  }
+  .meet-the-team__centerpiece {
+    width: 100% !important;
+    max-width: 290px !important;
+    margin: 0 auto !important;
+  }
+  .meet-the-team__cta {
+    order: 4 !important;
+    margin: 0.5rem auto 0 auto !important;
+    min-width: auto !important;
+    width: auto !important;
+  }
+}
+
