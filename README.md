@@ -129,8 +129,8 @@ mahadi-hasan-portfolio/
 ### Installation
 Clone the repository and install runtime dependencies:
 ```bash
-git clone https://github.com/labibfohayer/mahadi-hasan-portfolio.git
-cd mahadi-hasan-portfolio
+git clone https://github.com/labibfohayer/Mahadi-Portfolio.git
+cd Mahadi-Portfolio
 npm install
 ```
 
