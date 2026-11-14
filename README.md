@@ -1,6 +1,6 @@
 # Mahadi Hasan — High-Performance 3D Portfolio & Client-Side CMS
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square)](https://github.com/labibfohayer/mahadi-hasan-portfolio)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square)](https://github.com/labibfohayer/Mahadi-Portfolio)
 [![React](https://img.shields.io/badge/React-18.3.1-blue?style=flat-square&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6.4.5-purple?style=flat-square&logo=vite)](https://vitejs.dev/)
@@ -180,8 +180,8 @@ mahadi-hasan-portfolio/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/labibfohayer/mahadi-hasan-portfolio.git
-   cd mahadi-hasan-portfolio
+   git clone https://github.com/labibfohayer/Mahadi-Portfolio.git
+   cd Mahadi-Portfolio
    ```
 
 2. **Install dependencies**:
