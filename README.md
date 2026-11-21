@@ -1,5 +1,7 @@
 # Mahadi Hasan — High-Performance 3D Portfolio & Client-Side CMS
 
+[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-mahadi--hasan.pages.dev-success?style=for-the-badge&logo=cloudflare&logoColor=white)](https://mahadi-hasan.pages.dev/)
+
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen?style=flat-square)](https://github.com/labibfohayer/Mahadi-Portfolio)
 [![React](https://img.shields.io/badge/React-18.3.1-blue?style=flat-square&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
@@ -195,12 +197,14 @@ mahadi-hasan-portfolio/
    ```
 
 4. **Access the application**:
-   - Portfolio Home: `http://localhost:5173#home`
-   - Selected Work: `http://localhost:5173#work`
-   - Services Breakdown: `http://localhost:5173#services`
-   - About Narrative: `http://localhost:5173#about`
-   - Contact Portal: `http://localhost:5173#contact`
-   - Admin CMS: `http://localhost:5173#admin` *(Default passcode: `mahadi2026`)*
+   - Local Development: `http://localhost:5173`
+   - 🌐 **Live Production Deployment**: **[mahadi-hasan.pages.dev](https://mahadi-hasan.pages.dev/)**
+     - Portfolio Home: [mahadi-hasan.pages.dev#home](https://mahadi-hasan.pages.dev/#home)
+     - Selected Work: [mahadi-hasan.pages.dev#work](https://mahadi-hasan.pages.dev/#work)
+     - Services Breakdown: [mahadi-hasan.pages.dev#services](https://mahadi-hasan.pages.dev/#services)
+     - About Narrative: [mahadi-hasan.pages.dev#about](https://mahadi-hasan.pages.dev/#about)
+     - Contact Portal: [mahadi-hasan.pages.dev#contact](https://mahadi-hasan.pages.dev/#contact)
+     - Admin CMS: [mahadi-hasan.pages.dev#admin](https://mahadi-hasan.pages.dev/#admin) *(Default passcode: `mahadi2026`)*
 
 ### Production Build
 
